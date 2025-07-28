@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solvexa Labs - Digital Innovation Studio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            light: '#1e3a8a',
+                            dark: '#60a5fa'
+                        },
+                        secondary: {
+                            light: '#3b82f6',
+                            dark: '#818cf8'
+                        }
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 1s ease-in-out',
+                        'fade-up': 'fadeUp 0.8s ease-out',
+                        'slide-in-left': 'slideInLeft 0.8s ease-out',
+                        'slide-in-right': 'slideInRight 0.8s ease-out',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        fadeUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        slideInLeft: {
+                            '0%': { opacity: '0', transform: 'translateX(-20px)' },
+                            '100%': { opacity: '1', transform: 'translateX(0)' },
+                        },
+                        slideInRight: {
+                            '0%': { opacity: '0', transform: 'translateX(20px)' },
+                            '100%': { opacity: '1', transform: 'translateX(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .blur-nav {
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+        .hero-title {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.2;
+        }
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        .project-card {
+            transition: all 0.3s ease;
+        }
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+        .animate-delay-100 {
+            animation-delay: 0.1s;
+        }
+        .animate-delay-200 {
+            animation-delay: 0.2s;
+        }
+        .animate-delay-300 {
+            animation-delay: 0.3s;
+        }
+        .animate-delay-400 {
+            animation-delay: 0.4s;
+        }
+        .animate-delay-500 {
+            animation-delay: 0.5s;
+        }
+        .animate-delay-600 {
+            animation-delay: 0.6s;
+        }
+        .animate-delay-700 {
+            animation-delay: 0.7s;
+        }
+        .animate-delay-800 {
+            animation-delay: 0.8s;
+        }
+        .animate-delay-900 {
+            animation-delay: 0.9s;
+        }
+        .animate-delay-1000 {
+            animation-delay: 1s;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+        }
+        .dark .gradient-bg {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+        }
+    </style>
+</head>
+<body class="bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-200 transition-colors duration-300">
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/15148674312?text=Hello%20Solvexa%20Labs%2C%20I%27d%20like%20to%20talk%20about%20a%20project" 
+       class="fixed bottom-8 right-8 z-50 bg-green-500 hover:bg-green-600 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-110">
+        <i class="fab fa-whatsapp text-2xl"></i>
+    </a>
+
+    <!-- Header/Navbar -->
+    <header class="fixed w-full z-40">
+        <nav class="blur-nav bg-white/80 dark:bg-gray-900/80 border-b border-gray-200 dark:border-gray-800 transition-colors duration-300">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between h-16">
+                    <div class="flex items-center">
+                        <!-- Logo -->
+                        <div class="flex-shrink-0 flex items-center">
+                            <span class="text-primary-light dark:text-primary-dark font-bold text-xl">Solvexa Labs</span>
+                        </div>
+                        <!-- Desktop Menu -->
+                        <div class="hidden md:ml-10 md:flex md:space-x-8">
+                            <a href="#home" class="border-primary-light dark:border-primary-dark text-primary-light dark:text-primary-dark inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Home</a>
+                            <a href="#about" class="border-transparent text-gray-500 dark:text-gray-300 hover:border-gray-300 hover:text-gray-700 dark:hover:text-gray-100 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">About</a>
+                            <a href="#services" class="border-transparent text-gray-500 dark:text-gray-300 hover:border-gray-300 hover:text-gray-700 dark:hover:text-gray-100 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Services</a>
+                            <a href="#projects" class="border-transparent text-gray-500 dark:text-gray-300 hover:border-gray-300 hover:text-gray-700 dark:hover:text-gray-100 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Projects</a>
+                            <a href="#contact" class="border-transparent text-gray-500 dark:text-gray-300 hover:border-gray-300 hover:text-gray-700 dark:hover:text-gray-100 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Contact</a>
+                        </div>
+                    </div>
+                    <div class="flex items-center">
+                        <!-- Dark Mode Toggle -->
+                        <button id="theme-toggle" type="button" class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg p-2">
+                            <i id="theme-icon" class="fas fa-moon"></i>
+                        </button>
+                        <!-- Mobile menu button -->
+                        <div class="md:hidden flex items-center">
+                            <button id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none">
+                                <i class="fas fa-bars"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Mobile menu -->
+            <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-gray-800 transition-colors duration-300">
+                <div class="pt-2 pb-3 space-y-1">
+                    <a href="#home" class="bg-primary-light/10 dark:bg-primary-dark/10 text-primary-light dark:text-primary-dark block pl-3 pr-4 py-2 border-l-4 border-primary-light dark:border-primary-dark text-base font-medium">Home</a>
+                    <a href="#about" class="border-transparent text-gray-500 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">About</a>
+                    <a href="#services" class="border-transparent text-gray-500 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Services</a>
+                    <a href="#projects" class="border-transparent text-gray-500 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Projects</a>
+                    <a href="#contact" class="border-transparent text-gray-500 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Contact</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative pt-24 pb-16 md:pt-32 md:pb-24 px-4 sm:px-6 lg:px-8">
+        <div class="absolute inset-0 z-0">
+            <div class="gradient-bg w-full h-full opacity-90"></div>
+        </div>
+        <div class="relative z-10 max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="text-center lg:text-left">
+                    <h1 class="hero-title text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-6 animate-fade-up">Turning Ideas into Digital Solutions</h1>
+                    <p class="text-xl md:text-2xl text-blue-100 max-w-2xl mx-auto lg:mx-0 mb-10 animate-fade-up animate-delay-100">We build scalable, smart, and beautiful digital products.</p>
+                    <div class="flex flex-col sm:flex-row justify-center lg:justify-start gap-4 animate-fade-up animate-delay-200">
+                        <a href="#contact" class="inline-block bg-white text-primary-light hover:bg-gray-100 font-bold py-3 px-8 rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105">Let's Build Together</a>
+                        <a href="#projects" class="inline-block bg-transparent border-2 border-white text-white hover:bg-white/10 font-bold py-3 px-8 rounded-lg shadow-lg transition-all duration-300">View Our Work</a>
+                    </div>
+                </div>
+                <div class="flex justify-center">
+                    <div class="relative">
+                        <div class="w-64 h-64 md:w-80 md:h-80 bg-white/20 rounded-full absolute -top-6 -left-6 z-0"></div>
+                        <div class="w-64 h-64 md:w-80 md:h-80 bg-white/20 rounded-full absolute -bottom-6 -right-6 z-0"></div>
+                        <div class="relative z-10 rounded-xl w-full h-64 md:h-80 overflow-hidden shadow-2xl">
+                            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80" 
+                                 alt="Digital Innovation" 
+                                 class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div class="order-2 lg:order-1">
+                <div class="rounded-xl w-full h-96 overflow-hidden shadow-lg">
+                    <img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80" alt="Our Team" class="w-full h-full object-cover">
+                </div>
+            </div>
+            <div class="order-1 lg:order-2">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6 animate-fade-up">About Solvexa Labs</h2>
+                <p class="text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-8 animate-fade-up animate-delay-100">
+                    Solvexa Labs transforms ideas into custom web apps, mobile apps, fintech platforms, and smart tools. We support bold entrepreneurs from idea to launch.
+                </p>
+                <div class="grid grid-cols-2 gap-6 mb-8">
+                    <div class="flex items-center">
+                        <div class="text-primary-light dark:text-primary-dark mr-3">
+                            <i class="fas fa-check-circle text-xl"></i>
+                        </div>
+                        <span class="font-medium">Innovative Solutions</span>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="text-primary-light dark:text-primary-dark mr-3">
+                            <i class="fas fa-check-circle text-xl"></i>
+                        </div>
+                        <span class="font-medium">Client-Centric Approach</span>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="text-primary-light dark:text-primary-dark mr-3">
+                            <i class="fas fa-check-circle text-xl"></i>
+                        </div>
+                        <span class="font-medium">Agile Development</span>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="text-primary-light dark:text-primary-dark mr-3">
+                            <i class="fas fa-check-circle text-xl"></i>
+                        </div>
+                        <span class="font-medium">Global Expertise</span>
+                    </div>
+                </div>
+                <a href="#contact" class="inline-block bg-primary-light dark:bg-primary-dark hover:bg-blue-800 dark:hover:bg-blue-400 text-white font-medium py-3 px-6 rounded-lg shadow transition-all duration-300">Start Your Project</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4 animate-fade-up">Our Services</h2>
+            <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto animate-fade-up animate-delay-100">We offer end-to-end digital product development services tailored to your needs</p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Service 1 -->
+            <div class="service-card bg-white dark:bg-gray-800 p-8 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 animate-fade-up animate-delay-200">
+                <div class="text-primary-light dark:text-primary-dark mb-4">
+                    <i class="fas fa-mobile-alt text-4xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">Mobile App Development</h3>
+                <p class="text-gray-600 dark:text-gray-300">
+                    Native and cross-platform mobile applications for iOS and Android with beautiful UI/UX and robust backend.
+                </p>
+            </div>
+            
+            <!-- Service 2 -->
+            <div class="service-card bg-white dark:bg-gray-800 p-8 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 animate-fade-up animate-delay-300">
+                <div class="text-primary-light dark:text-primary-dark mb-4">
+                    <i class="fas fa-globe text-4xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">Website Development</h3>
+                <p class="text-gray-600 dark:text-gray-300">
+                    One-page, corporate, and e-commerce websites with modern designs, fast loading, and SEO optimization.
+                </p>
+            </div>
+            
+            <!-- Service 3 -->
+            <div class="service-card bg-white dark:bg-gray-800 p-8 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 animate-fade-up animate-delay-400">
+                <div class="text-primary-light dark:text-primary-dark mb-4">
+                    <i class="fas fa-wallet text-4xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">Fintech & Wallet Solutions</h3>
+                <p class="text-gray-600 dark:text-gray-300">
+                    Secure payment solutions, digital wallets, and financial platforms with compliance and scalability.
+                </p>
+            </div>
+            
+            <!-- Service 4 -->
+            <div class="service-card bg-white dark:bg-gray-800 p-8 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 animate-fade-up animate-delay-500">
+                <div class="text-primary-light dark:text-primary-dark mb-4">
+                    <i class="fas fa-robot text-4xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">AI-Powered EdTech Tools</h3>
+                <p class="text-gray-600 dark:text-gray-300">
+                    Intelligent learning platforms with adaptive algorithms, personalized content, and analytics.
+                </p>
+            </div>
+            
+            <!-- Service 5 -->
+            <div class="service-card bg-white dark:bg-gray-800 p-8 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 animate-fade-up animate-delay-600">
+                <div class="text-primary-light dark:text-primary-dark mb-4">
+                    <i class="fas fa-lightbulb text-4xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">Startup MVP & Prototype Building</h3>
+                <p class="text-gray-600 dark:text-gray-300">
+                    Rapid prototyping and minimum viable products to validate your idea and attract investors.
+                </p>
+            </div>
+            
+            <!-- Service 6 (hidden on mobile) -->
+            <div class="service-card bg-white dark:bg-gray-800 p-8 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 animate-fade-up animate-delay-700">
+                <div class="text-primary-light dark:text-primary-dark mb-4">
+                    <i class="fas fa-globe text-4xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">Website Design (Business, One-page, E-commerce)</h3>
+                <p class="text-gray-600 dark:text-gray-300">
+                    Modern, responsive websites tailored for businesses, landing pages, and online stores.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto bg-gray-50 dark:bg-gray-800">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4 animate-fade-up">Our Projects</h2>
+            <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto animate-fade-up animate-delay-100">Explore some of our recent work and success stories</p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Project 1 -->
+            <div class="project-card relative rounded-xl overflow-hidden shadow-lg animate-fade-up animate-delay-200">
+                <div class="h-64 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80" alt="Onetchek Project" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                </div>
+                <div class="project-overlay absolute inset-0 bg-black/70 flex flex-col justify-center items-center opacity-0 p-6">
+                    <h3 class="text-white text-xl font-bold mb-2">Onetchek</h3>
+                    <p class="text-gray-200 text-center mb-4">A decentralized neo-bank giving users full control over their money across currencies and borders.</p>
+                    <a href="https://www.onetchek.com" target="_blank" class="text-white border border-white px-4 py-2 rounded hover:bg-white hover:text-black transition-colors">View Project</a>
+                </div>
+            </div>
+            
+            <!-- Project 2 -->
+            <div class="project-card relative rounded-xl overflow-hidden shadow-lg animate-fade-up animate-delay-300">
+                <div class="h-64 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80" alt="Ivonnia Project" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                </div>
+                <div class="project-overlay absolute inset-0 bg-black/70 flex flex-col justify-center items-center opacity-0 p-6">
+                    <h3 class="text-white text-xl font-bold mb-2">Ivonnia</h3>
+                    <p class="text-gray-200 text-center mb-4">AI-powered QBank for USMLE & MCCQE medical exams, with adaptive learning and voice-based practice.</p>
+                    <a href="https://www.ivonnia.com" target="_blank" class="text-white border border-white px-4 py-2 rounded hover:bg-white hover:text-black transition-colors">View Project</a>
+                </div>
+            </div>
+            
+            <!-- Project 3 -->
+            <div class="project-card relative rounded-xl overflow-hidden shadow-lg animate-fade-up animate-delay-400">
+                <div class="h-64 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1559526324-593bc073d938?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80" alt="KwikPey Project" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                </div>
+                <div class="project-overlay absolute inset-0 bg-black/70 flex flex-col justify-center items-center opacity-0 p-6">
+                    <h3 class="text-white text-xl font-bold mb-2">KwikPey</h3>
+                    <p class="text-gray-200 text-center mb-4">A fast and secure mobile wallet app for daily transactions in Haiti and the Caribbean.</p>
+                    <a href="https://www.kwikpey.xyz" target="_blank" class="text-white border border-white px-4 py-2 rounded hover:bg-white hover:text-black transition-colors">View Project</a>
+                </div>
+            </div>
+            
+            <!-- Project 4 -->
+            <div class="project-card relative rounded-xl overflow-hidden shadow-lg animate-fade-up animate-delay-500">
+                <div class="h-64 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80" alt="Sitadel Project" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                </div>
+                <div class="project-overlay absolute inset-0 bg-black/70 flex flex-col justify-center items-center opacity-0 p-6">
+                    <h3 class="text-white text-xl font-bold mb-2">Sitadel</h3>
+                    <p class="text-gray-200 text-center mb-4">A no-code/low-code platform to build mobile apps and websites without writing code.</p>
+                    <a href="https://www.sitadel.dev" target="_blank" class="text-white border border-white px-4 py-2 rounded hover:bg-white hover:text-black transition-colors">View Project</a>
+                </div>
+            </div>
+            
+            <!-- Project 5 -->
+            <div class="project-card relative rounded-xl overflow-hidden shadow-lg animate-fade-up animate-delay-600">
+                <div class="h-64 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80" alt="IdeaSpark Project" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                </div>
+                <div class="project-overlay absolute inset-0 bg-black/70 flex flex-col justify-center items-center opacity-0 p-6">
+                    <h3 class="text-white text-xl font-bold mb-2">IdeaSpark</h3>
+                    <p class="text-gray-200 text-center mb-4">An AI-powered idea generator and validation tool for aspiring entrepreneurs.</p>
+                    <a href="https://www.ideaspark.xyz" target="_blank" class="text-white border border-white px-4 py-2 rounded hover:bg-white hover:text-black transition-colors">View Project</a>
+                </div>
+            </div>
+            
+            <!-- Project 6 -->
+            <div class="project-card relative rounded-xl overflow-hidden shadow-lg animate-fade-up animate-delay-700">
+                <div class="h-64 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1559526324-593bc073d938?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80" alt="Haitiaigrant Project" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                </div>
+                <div class="project-overlay absolute inset-0 bg-black/70 flex flex-col justify-center items-center opacity-0 p-6">
+                    <h3 class="text-white text-xl font-bold mb-2">Haitiaigrant</h3>
+                    <p class="text-gray-200 text-center mb-4">A digital guide for Haitians abroad: immigration help, legal resources, and community support.</p>
+                    <a href="https://www.haitiaigrant.xyz" target="_blank" class="text-white border border-white px-4 py-2 rounded hover:bg-white hover:text-black transition-colors">View Project</a>
+                </div>
+            </div>
+            
+            <!-- Project 7 -->
+            <div class="project-card relative rounded-xl overflow-hidden shadow-lg animate-fade-up animate-delay-800">
+                <div class="h-64 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80" alt="Haiti Grant Project" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                </div>
+                <div class="project-overlay absolute inset-0 bg-black/70 flex flex-col justify-center items-center opacity-0 p-6">
+                    <h3 class="text-white text-xl font-bold mb-2">Haiti Grant</h3>
+                    <p class="text-gray-200 text-center mb-4">GPU compute grant program to empower Haitian youth building AI/ML projects.</p>
+                    <a href="#" class="text-white border border-white px-4 py-2 rounded hover:bg-white hover:text-black transition-colors">View Project</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4 animate-fade-up">What Our Clients Say</h2>
+            <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto animate-fade-up animate-delay-100">Hear from founders and organizations we've worked with</p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Testimonial 1 -->
+            <div class="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-md animate-fade-up animate-delay-200">
+                <div class="flex items-center mb-4">
+                    <div class="w-12 h-12 rounded-full bg-blue-500 flex items-center justify-center text-white font-bold mr-4">JD</div>
+                    <div>
+                        <h4 class="font-bold text-gray-900 dark:text-white">Jean D.</h4>
+                        <p class="text-sm text-gray-500 dark:text-gray-400">CEO, Onetchek</p>
+                    </div>
+                </div>
+                <p class="text-gray-600 dark:text-gray-300 italic">
+                    "Solvexa Labs transformed our vision into a functional product in record time. Their technical expertise and attention to detail are unmatched."
+                </p>
+                <div class="mt-4 text-yellow-400">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+            </div>
+            
+            <!-- Testimonial 2 -->
+            <div class="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-md animate-fade-up animate-delay-300">
+                <div class="flex items-center mb-4">
+                    <div class="w-12 h-12 rounded-full bg-purple-500 flex items-center justify-center text-white font-bold mr-4">SM</div>
+                    <div>
+                        <h4 class="font-bold text-gray-900 dark:text-white">Sarah M.</h4>
+                        <p class="text-sm text-gray-500 dark:text-gray-400">Founder, Ivonnia</p>
+                    </div>
+                </div>
+                <p class="text-gray-600 dark:text-gray-300 italic">
+                    "Working with Solvexa was a game-changer for our startup. They understood our needs and delivered beyond expectations."
+                </p>
+                <div class="mt-4 text-yellow-400">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+            </div>
+            
+            <!-- Testimonial 3 -->
+            <div class="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-md animate-fade-up animate-delay-400">
+                <div class="flex items-center mb-4">
+                    <div class="w-12 h-12 rounded-full bg-green-500 flex items-center justify-center text-white font-bold mr-4">MP</div>
+                    <div>
+                        <h4 class="font-bold text-gray-900 dark:text-white">Marc P.</h4>
+                        <p class="text-sm text-gray-500 dark:text-gray-400">CTO, KwikPey</p>
+                    </div>
+                </div>
+                <p class="text-gray-600 dark:text-gray-300 italic">
+                    "Their ability to solve complex technical challenges while maintaining clean code and documentation is impressive."
+                </p>
+                <div class="mt-4 text-yellow-400">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto bg-gray-50 dark:bg-gray-800 rounded-xl">
+        <div class="max-w-3xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4 animate-fade-up">Get In Touch</h2>
+                <p class="text-xl text-gray-600 dark:text-gray-300 animate-fade-up animate-delay-100">Got a project in mind? Let's talk.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="animate-fade-up animate-delay-200">
+                    <form id="contact-form" class="space-y-6">
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Your Name</label>
+                            <input type="text" id="name" name="name" required class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-light dark:focus:ring-primary-dark focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Email Address</label>
+                            <input type="email" id="email" name="email" required class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-light dark:focus:ring-primary-dark focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white">
+                        </div>
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Your Message</label>
+                            <textarea id="message" name="message" rows="4" required class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-light dark:focus:ring-primary-dark focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white"></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-primary-light dark:bg-primary-dark hover:bg-blue-800 dark:hover:bg-blue-400 text-white font-medium py-3 px-6 rounded-lg transition-colors duration-300">Send Message</button>
+                    </form>
+                </div>
+                
+                <div class="animate-fade-up animate-delay-300">
+                    <div class="bg-white dark:bg-gray-700 p-8 rounded-xl shadow-md h-full">
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-6">Contact Information</h3>
+                        
+                        <div class="space-y-4">
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 text-primary-light dark:text-primary-dark">
+                                    <i class="fas fa-envelope text-xl"></i>
+                                </div>
+                                <div class="ml-3">
+                                    <p class="text-sm font-medium text-gray-500 dark:text-gray-400">Email</p>
+                                    <a href="mailto:contact@solvexalabs.com" class="text-base text-gray-900 dark:text-white hover:text-primary-light dark:hover:text-primary-dark">contact@solvexalabs.com</a>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 text-primary-light dark:text-primary-dark">
+                                    <i class="fab fa-whatsapp text-xl"></i>
+                                </div>
+                                <div class="ml-3">
+                                    <p class="text-sm font-medium text-gray-500 dark:text-gray-400">WhatsApp</p>
+                                    <a href="https://wa.me/15148674312" class="text-base text-gray-900 dark:text-white hover:text-primary-light dark:hover:text-primary-dark">+1 (514) 867-4312</a>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 text-primary-light dark:text-primary-dark">
+                                    <i class="fas fa-map-marker-alt text-xl"></i>
+                                </div>
+                                <div class="ml-3">
+                                    <p class="text-sm font-medium text-gray-500 dark:text-gray-400">Location</p>
+                                    <p class="text-base text-gray-900 dark:text-white">Montreal, Canada</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-8">
+                            <h4 class="text-lg font-medium text-gray-900 dark:text-white mb-4">Connect With Us</h4>
+                            <div class="flex space-x-4">
+                                <a href="#" class="text-gray-500 dark:text-gray-400 hover:text-primary-light dark:hover:text-primary-dark">
+                                    <i class="fab fa-twitter text-xl"></i>
+                                </a>
+                                <a href="#" class="text-gray-500 dark:text-gray-400 hover:text-primary-light dark:hover:text-primary-dark">
+                                    <i class="fab fa-linkedin text-xl"></i>
+                                </a>
+                                <a href="#" class="text-gray-500 dark:text-gray-400 hover:text-primary-light dark:hover:text-primary-dark">
+                                    <i class="fab fa-github text-xl"></i>
+                                </a>
+                                <a href="#" class="text-gray-500 dark:text-gray-400 hover:text-primary-light dark:hover:text-primary-dark">
+                                    <i class="fab fa-instagram text-xl"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-100 dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800 py-12 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="md:col-span-2">
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4">Solvexa Labs</h3>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4">
+                        Digital innovation studio building smart, scalable, and high-impact technology solutions.
+                    </p>
+                    <div class="flex space-x-4">
+                        <button id="footer-theme-toggle" type="button" class="text-gray-500 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-lg p-2">
+                            <i id="footer-theme-icon" class="fas fa-moon"></i>
+                        </button>
+                        <a href="#" class="text-gray-500 dark:text-gray-400 hover:text-primary-light dark:hover:text-primary-dark">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-500 dark:text-gray-400 hover:text-primary-light dark:hover:text-primary-dark">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="#" class="text-gray-500 dark:text-gray-400 hover:text-primary-light dark:hover:text-primary-dark">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-medium text-gray-900 dark:text-white mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="text-gray-600 dark:text-gray-300 hover:text-primary-light dark:hover:text-primary-dark">Home</a></li>
+                        <li><a href="#about" class="text-gray-600 dark:text-gray-300 hover:text-primary-light dark:hover:text-primary-dark">About</a></li>
+                        <li><a href="#services" class="text-gray-600 dark:text-gray-300 hover:text-primary-light dark:hover:text-primary-dark">Services</a></li>
+                        <li><a href="#projects" class="text-gray-600 dark:text-gray-300 hover:text-primary-light dark:hover:text-primary-dark">Projects</a></li>
+                        <li><a href="#contact" class="text-gray-600 dark:text-gray-300 hover:text-primary-light dark:hover:text-primary-dark">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-medium text-gray-900 dark:text-white mb-4">Contact</h4>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <i class="fas fa-envelope text-gray-500 dark:text-gray-400 mt-1 mr-2"></i>
+                            <a href="mailto:contact@solvexalabs.com" class="text-gray-600 dark:text-gray-300 hover:text-primary-light dark:hover:text-primary-dark">contact@solvexalabs.com</a>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fab fa-whatsapp text-gray-500 dark:text-gray-400 mt-1 mr-2"></i>
+                            <a href="https://wa.me/15148674312" class="text-gray-600 dark:text-gray-300 hover:text-primary-light dark:hover:text-primary-dark">+1 (514) 867-4312</a>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt text-gray-500 dark:text-gray-400 mt-1 mr-2"></i>
+                            <span class="text-gray-600 dark:text-gray-300">Montreal, Canada</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="mt-12 pt-8 border-t border-gray-200 dark:border-gray-800 text-center">
+                <p class="text-gray-500 dark:text-gray-400">
+                    &copy; 2023 Solvexa Labs. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Project card hover effect
+        document.addEventListener('DOMContentLoaded', function() {
+            const projectCards = document.querySelectorAll('.project-card');
+            
+            projectCards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.querySelector('.project-overlay').style.opacity = '1';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.querySelector('.project-overlay').style.opacity = '0';
+                });
+            });
+        });
+        
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Theme toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+        const footerThemeToggle = document.getElementById('footer-theme-toggle');
+        const footerThemeIcon = document.getElementById('footer-theme-icon');
+        
+        function toggleTheme() {
+            const html = document.documentElement;
+            html.classList.toggle('dark');
+            
+            if (html.classList.contains('dark')) {
+                themeIcon.classList.replace('fa-moon', 'fa-sun');
+                footerThemeIcon.classList.replace('fa-moon', 'fa-sun');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                themeIcon.classList.replace('fa-sun', 'fa-moon');
+                footerThemeIcon.classList.replace('fa-sun', 'fa-moon');
+                localStorage.setItem('theme', 'light');
+            }
+        }
+        
+        themeToggle.addEventListener('click', toggleTheme);
+        footerThemeToggle.addEventListener('click', toggleTheme);
+        
+        // Check for saved theme preference
+        if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+            themeIcon.classList.replace('fa-moon', 'fa-sun');
+            footerThemeIcon.classList.replace('fa-moon', 'fa-sun');
+        } else {
+            document.documentElement.classList.remove('dark');
+            themeIcon.classList.replace('fa-sun', 'fa-moon');
+            footerThemeIcon.classList.replace('fa-sun', 'fa-moon');
+        }
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                }
+            });
+        });
+        
+        // Form submission
+        const contactForm = document.getElementById('contact-form');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Get form values
+                const name = document.getElementById('name').value;
+                const email = document.getElementById('email').value;
+                const message = document.getElementById('message').value;
+                
+                // Here you would typically send the data to your server
+                console.log('Form submitted:', { name, email, message });
+                
+                // Show success message
+                alert('Thank you for your message! We will get back to you soon.');
+                
+                // Reset form
+                contactForm.reset();
+            });
+        }
+        
+        // Intersection Observer for scroll animations
+        const animateOnScroll = () => {
+            const elements = document.querySelectorAll('[class*="animate-"]');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const element = entry.target;
+                        const animationClasses = Array.from(element.classList).filter(cls => cls.startsWith('animate-'));
+                        
+                        animationClasses.forEach(animationClass => {
+                            element.classList.add(animationClass);
+                        });
+                        
+                        observer.unobserve(element);
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+            
+            elements.forEach(element => {
+                observer.observe(element);
+            });
+        };
+        
+        // Initialize on DOM load
+        document.addEventListener('DOMContentLoaded', () => {
+            animateOnScroll();
+        });
+    </script>
+</body>
+</html>
