@@ -14,12 +14,34 @@
                 extend: {
                     colors: {
                         primary: {
-                            light: '#1e3a8a',
-                            dark: '#60a5fa'
+                            50: '#22C55E',
+                            100: '#22C55E',
+                            200: '#22C55E',
+                            300: '#22C55E',
+                            400: '#22C55E',
+                            500: '#22C55E',
+                            600: '#22C55E',
+                            700: '#22C55E',
+                            800: '#22C55E',
+                            900: '#22C55E',
+                            950: '#22C55E',
+                            light: '#22C55E',
+                            dark: '#22C55E'
                         },
                         secondary: {
-                            light: '#3b82f6',
-                            dark: '#818cf8'
+                            50: '#38BDF8',
+                            100: '#38BDF8',
+                            200: '#38BDF8',
+                            300: '#38BDF8',
+                            400: '#38BDF8',
+                            500: '#38BDF8',
+                            600: '#38BDF8',
+                            700: '#38BDF8',
+                            800: '#38BDF8',
+                            900: '#38BDF8',
+                            950: '#38BDF8',
+                            light: '#38BDF8',
+                            dark: '#38BDF8'
                         }
                     },
                     animation: {
@@ -27,6 +49,9 @@
                         'fade-up': 'fadeUp 0.8s ease-out',
                         'slide-in-left': 'slideInLeft 0.8s ease-out',
                         'slide-in-right': 'slideInRight 0.8s ease-out',
+                        'pulse-glow': 'pulseGlow 2s infinite',
+                        'float': 'float 3s ease-in-out infinite',
+                        'spin-slow': 'spin 3s linear infinite'
                     },
                     keyframes: {
                         fadeIn: {
@@ -44,6 +69,14 @@
                         slideInRight: {
                             '0%': { opacity: '0', transform: 'translateX(20px)' },
                             '100%': { opacity: '1', transform: 'translateX(0)' },
+                        },
+                        pulseGlow: {
+                            '0%, 100%': { boxShadow: '0 0 5px rgba(30, 58, 138, 0.5)' },
+                            '50%': { boxShadow: '0 0 20px rgba(30, 58, 138, 0.8)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-10px)' },
                         }
                     }
                 }
@@ -51,69 +84,67 @@
         }
     </script>
     <style>
-        body {
-            font-family: 'Inter', sans-serif;
+        :root{
+            --bg:#050b14;
+            --accent1:#22C55E;
+            --accent2:#38BDF8;
+            --text:#E5E7EB;
+            --card:#0a101a;
         }
-        .blur-nav {
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{
+            font-family:'Inter',sans-serif;
+            background:var(--bg);
+            color:var(--text);
+            overflow-x:hidden;
         }
-        .hero-title {
-            font-family: 'Poppins', sans-serif;
-            line-height: 1.2;
+        .blur-nav{
+            position:fixed;top:0;left:0;right:0;z-index:50;
+            backdrop-filter:blur(32px) saturate(180%);
+            -webkit-backdrop-filter:blur(32px) saturate(180%);
+            background:rgba(5,11,20,.75);
+            border-bottom:1px solid rgba(34,197,94,.25);
         }
-        .service-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        .hero-title{
+            font-family:'Poppins',sans-serif;
+            font-size:clamp(2.4rem,5vw,4rem);
+            line-height:1.1;
+            color:#FFFFFF;
         }
-        .project-card {
-            transition: all 0.3s ease;
+        .service-card,.project-card{
+            background:var(--card);
+            border:1px solid rgba(56,189,248,.15);
+            border-radius:1rem;
+            transition:all .4s ease;
+            backdrop-filter:blur(12px);
+            overflow:hidden;
         }
-        .project-card:hover {
-            transform: translateY(-5px);
+        .service-card:hover,.project-card:hover{
+            transform:translateY(-6px) scale(1.02);
+            border-color:var(--accent1);
+            box-shadow:0 0 30px rgba(34,197,94,.35);
         }
-        .animate-delay-100 {
-            animation-delay: 0.1s;
+        .gradient-bg{
+            background:
+              radial-gradient(circle at 20% 50%,rgba(34,197,94,.25) 0%,transparent 55%),
+              radial-gradient(circle at 80% 80%,rgba(56,189,248,.25) 0%,transparent 55%),
+              linear-gradient(135deg,var(--bg) 0%,#0a0f1a 100%);
         }
-        .animate-delay-200 {
-            animation-delay: 0.2s;
+        .neural-grid{
+            background:
+              linear-gradient(rgba(56,189,248,.06) 1px,transparent 1px),
+              linear-gradient(90deg,rgba(56,189,248,.06) 1px,transparent 1px);
+            background-size:60px 60px;
+            animation:grid-move 25s linear infinite;
         }
-        .animate-delay-300 {
-            animation-delay: 0.3s;
-        }
-        .animate-delay-400 {
-            animation-delay: 0.4s;
-        }
-        .animate-delay-500 {
-            animation-delay: 0.5s;
-        }
-        .animate-delay-600 {
-            animation-delay: 0.6s;
-        }
-        .animate-delay-700 {
-            animation-delay: 0.7s;
-        }
-        .animate-delay-800 {
-            animation-delay: 0.8s;
-        }
-        .animate-delay-900 {
-            animation-delay: 0.9s;
-        }
-        .animate-delay-1000 {
-            animation-delay: 1s;
-        }
-        .gradient-bg {
-            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
-        }
-        .dark .gradient-bg {
-            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-        }
+        @keyframes grid-move{0%{background-position:0 0;}100%{background-position:60px 60px;}}
+        .cyber-border{border:1px solid;border-image:linear-gradient(45deg,var(--accent1),var(--accent2)) 1;}
     </style>
 </head>
-<body class="bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-200 transition-colors duration-300">
+<body>
     <!-- WhatsApp Floating Button -->
-    <a href="https://wa.me/15148674312?text=Hello%20Solvexa%20Labs%2C%20I%27d%20like%20to%20talk%20about%20a%20project" 
-       class="fixed bottom-8 right-8 z-50 bg-green-500 hover:bg-green-600 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-110">
+    <a href="https://wa.me/15148674312?text=Hello%20Solvexa%20Labs%2C%20I%27d%20like%20to%20talk%20about%20a%20project"
+        class="fixed bottom-8 right-8 z-50 bg-green-500 hover:bg-green-600 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-110 animate-pulse-glow">
         <i class="fab fa-whatsapp text-2xl"></i>
     </a>
 
@@ -123,11 +154,9 @@
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex justify-between h-16">
                     <div class="flex items-center">
-                        <!-- Logo -->
                         <div class="flex-shrink-0 flex items-center">
                             <span class="text-primary-light dark:text-primary-dark font-bold text-xl">Solvexa Labs</span>
                         </div>
-                        <!-- Desktop Menu -->
                         <div class="hidden md:ml-10 md:flex md:space-x-8">
                             <a href="#home" class="border-primary-light dark:border-primary-dark text-primary-light dark:text-primary-dark inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Home</a>
                             <a href="#about" class="border-transparent text-gray-500 dark:text-gray-300 hover:border-gray-300 hover:text-gray-700 dark:hover:text-gray-100 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">About</a>
@@ -137,11 +166,9 @@
                         </div>
                     </div>
                     <div class="flex items-center">
-                        <!-- Dark Mode Toggle -->
                         <button id="theme-toggle" type="button" class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg p-2">
                             <i id="theme-icon" class="fas fa-moon"></i>
                         </button>
-                        <!-- Mobile menu button -->
                         <div class="md:hidden flex items-center">
                             <button id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none">
                                 <i class="fas fa-bars"></i>
@@ -150,14 +177,13 @@
                     </div>
                 </div>
             </div>
-            <!-- Mobile menu -->
-            <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-gray-800 transition-colors duration-300">
+            <div id="mobile-menu" class="hidden md:hidden bg-[#050b14] transition-colors duration-300">
                 <div class="pt-2 pb-3 space-y-1">
-                    <a href="#home" class="bg-primary-light/10 dark:bg-primary-dark/10 text-primary-light dark:text-primary-dark block pl-3 pr-4 py-2 border-l-4 border-primary-light dark:border-primary-dark text-base font-medium">Home</a>
-                    <a href="#about" class="border-transparent text-gray-500 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">About</a>
-                    <a href="#services" class="border-transparent text-gray-500 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Services</a>
-                    <a href="#projects" class="border-transparent text-gray-500 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Projects</a>
-                    <a href="#contact" class="border-transparent text-gray-500 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Contact</a>
+                    <a href="#home" class="bg-[#22C55E]/10 text-[#22C55E] block pl-3 pr-4 py-2 border-l-4 border-[#22C55E] text-base font-medium">Home</a>
+                    <a href="#about" class="border-transparent text-gray-300 hover:bg-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">About</a>
+                    <a href="#services" class="border-transparent text-gray-300 hover:bg-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Services</a>
+                    <a href="#projects" class="border-transparent text-gray-300 hover:bg-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Projects</a>
+                    <a href="#contact" class="border-transparent text-gray-300 hover:bg-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Contact</a>
                 </div>
             </div>
         </nav>
@@ -166,26 +192,27 @@
     <!-- Hero Section -->
     <section id="home" class="relative pt-24 pb-16 md:pt-32 md:pb-24 px-4 sm:px-6 lg:px-8">
         <div class="absolute inset-0 z-0">
-            <div class="gradient-bg w-full h-full opacity-90"></div>
+            <div class="gradient-bg w-full h-full neural-grid"></div>
+            <div class="absolute inset-0 bg-gradient-to-b from-transparent via-[#22C55E]/5 to-transparent animate-pulse"></div>
         </div>
         <div class="relative z-10 max-w-7xl mx-auto">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                 <div class="text-center lg:text-left">
-                    <h1 class="hero-title text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-6 animate-fade-up">Turning Ideas into Digital Solutions</h1>
-                    <p class="text-xl md:text-2xl text-blue-100 max-w-2xl mx-auto lg:mx-0 mb-10 animate-fade-up animate-delay-100">We build scalable, smart, and beautiful digital products.</p>
+                    <h1 class="hero-title text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-6 animate-fade-up">
+                        <span class="typing-effect">Turning Ideas into Digital Solutions</span>
+                    </h1>
+                    <p class="text-xl md:text-2xl text-blue-100 max-w-2xl mx-auto lg:mx-0 mb-10 animate-fade-up animate-delay-100">We build scalable, smart, and beautiful digital products with cutting-edge technology.</p>
                     <div class="flex flex-col sm:flex-row justify-center lg:justify-start gap-4 animate-fade-up animate-delay-200">
-                        <a href="#contact" class="inline-block bg-white text-primary-light hover:bg-gray-100 font-bold py-3 px-8 rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105">Let's Build Together</a>
-                        <a href="#projects" class="inline-block bg-transparent border-2 border-white text-white hover:bg-white/10 font-bold py-3 px-8 rounded-lg shadow-lg transition-all duration-300">View Our Work</a>
+                        <a href="#contact" class="inline-block bg-[#22C55E] text-white hover:bg-[#16a34a] font-bold py-3 px-8 rounded-lg glow transition-all duration-300 transform hover:scale-105 hover:shadow-[0_0_30px_rgba(34,197,94,0.5)]">Let's Build Together</a>
+                        <a href="#projects" class="inline-block bg-transparent border-2 border-[#38BDF8] text-[#38BDF8] hover:bg-[#38BDF8]/10 font-bold py-3 px-8 rounded-lg transition-all duration-300 hover:shadow-[0_0_30px_rgba(56,189,248,0.3)]">View Our Work</a>
                     </div>
                 </div>
                 <div class="flex justify-center">
                     <div class="relative">
-                        <div class="w-64 h-64 md:w-80 md:h-80 bg-white/20 rounded-full absolute -top-6 -left-6 z-0"></div>
-                        <div class="w-64 h-64 md:w-80 md:h-80 bg-white/20 rounded-full absolute -bottom-6 -right-6 z-0"></div>
+                        <div class="w-64 h-64 md:w-80 md:h-80 bg-white/20 rounded-full absolute -top-6 -left-6 z-0 animate-float"></div>
+                        <div class="w-64 h-64 md:w-80 md:h-80 bg-white/20 rounded-full absolute -bottom-6 -right-6 z-0 animate-float" style="animation-delay: -1.5s;"></div>
                         <div class="relative z-10 rounded-xl w-full h-64 md:h-80 overflow-hidden shadow-2xl">
-                            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80" 
-                                 alt="Digital Innovation" 
-                                 class="w-full h-full object-cover">
+                            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80" alt="Digital Innovation" class="w-full h-full object-cover">
                         </div>
                     </div>
                 </div>
@@ -204,7 +231,7 @@
             <div class="order-1 lg:order-2">
                 <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6 animate-fade-up">About Solvexa Labs</h2>
                 <p class="text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-8 animate-fade-up animate-delay-100">
-                    Solvexa Labs transforms ideas into custom web apps, mobile apps, fintech platforms, and smart tools. We support bold entrepreneurs from idea to launch.
+                    Solvexa Labs transforms ideas into custom web apps, mobile apps, fintech platforms, and AI-powered tools. We partner with bold entrepreneurs from concept to launch, delivering scalable solutions that drive real impact.
                 </p>
                 <div class="grid grid-cols-2 gap-6 mb-8">
                     <div class="flex items-center">
@@ -240,75 +267,57 @@
     <!-- Services Section -->
     <section id="services" class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         <div class="text-center mb-16">
-            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4 animate-fade-up">Our Services</h2>
-            <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto animate-fade-up animate-delay-100">We offer end-to-end digital product development services tailored to your needs</p>
+            <h2 class="text-3xl md:text-4xl font-bold text-[#F8FAFC] mb-4 animate-fade-up">Our Services</h2>
+            <p class="text-lg text-[#38BDF8] max-w-2xl mx-auto animate-fade-up animate-delay-100">We offer end-to-end digital product development services tailored to your needs</p>
         </div>
         
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <!-- Service 1 -->
-            <div class="service-card bg-white dark:bg-gray-800 p-8 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 animate-fade-up animate-delay-200">
+            <div class="service-card p-8 rounded-xl transition-all duration-300 animate-fade-up animate-delay-200">
                 <div class="text-primary-light dark:text-primary-dark mb-4">
                     <i class="fas fa-mobile-alt text-4xl"></i>
                 </div>
                 <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">Mobile App Development</h3>
-                <p class="text-gray-600 dark:text-gray-300">
-                    Native and cross-platform mobile applications for iOS and Android with beautiful UI/UX and robust backend.
-                </p>
+                <p class="text-gray-600 dark:text-gray-300">Native and cross-platform mobile applications for iOS and Android with beautiful UI/UX and robust backend.</p>
             </div>
             
-            <!-- Service 2 -->
             <div class="service-card bg-white dark:bg-gray-800 p-8 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 animate-fade-up animate-delay-300">
                 <div class="text-primary-light dark:text-primary-dark mb-4">
                     <i class="fas fa-globe text-4xl"></i>
                 </div>
                 <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">Website Development</h3>
-                <p class="text-gray-600 dark:text-gray-300">
-                    One-page, corporate, and e-commerce websites with modern designs, fast loading, and SEO optimization.
-                </p>
+                <p class="text-gray-600 dark:text-gray-300">One-page, corporate, and e-commerce websites with modern designs, fast loading, and SEO optimization.</p>
             </div>
             
-            <!-- Service 3 -->
             <div class="service-card bg-white dark:bg-gray-800 p-8 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 animate-fade-up animate-delay-400">
                 <div class="text-primary-light dark:text-primary-dark mb-4">
                     <i class="fas fa-wallet text-4xl"></i>
                 </div>
                 <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">Fintech & Wallet Solutions</h3>
-                <p class="text-gray-600 dark:text-gray-300">
-                    Secure payment solutions, digital wallets, and financial platforms with compliance and scalability.
-                </p>
+                <p class="text-gray-600 dark:text-gray-300">Secure payment solutions, digital wallets, and financial platforms with compliance and scalability.</p>
             </div>
             
-            <!-- Service 4 -->
             <div class="service-card bg-white dark:bg-gray-800 p-8 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 animate-fade-up animate-delay-500">
                 <div class="text-primary-light dark:text-primary-dark mb-4">
                     <i class="fas fa-robot text-4xl"></i>
                 </div>
                 <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">AI-Powered EdTech Tools</h3>
-                <p class="text-gray-600 dark:text-gray-300">
-                    Intelligent learning platforms with adaptive algorithms, personalized content, and analytics.
-                </p>
+                <p class="text-gray-600 dark:text-gray-300">Intelligent learning platforms with adaptive algorithms, personalized content, and analytics.</p>
             </div>
             
-            <!-- Service 5 -->
             <div class="service-card bg-white dark:bg-gray-800 p-8 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 animate-fade-up animate-delay-600">
                 <div class="text-primary-light dark:text-primary-dark mb-4">
                     <i class="fas fa-lightbulb text-4xl"></i>
                 </div>
                 <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">Startup MVP & Prototype Building</h3>
-                <p class="text-gray-600 dark:text-gray-300">
-                    Rapid prototyping and minimum viable products to validate your idea and attract investors.
-                </p>
+                <p class="text-gray-600 dark:text-gray-300">Rapid prototyping and minimum viable products to validate your idea and attract investors.</p>
             </div>
             
-            <!-- Service 6 (hidden on mobile) -->
             <div class="service-card bg-white dark:bg-gray-800 p-8 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 animate-fade-up animate-delay-700">
                 <div class="text-primary-light dark:text-primary-dark mb-4">
-                    <i class="fas fa-globe text-4xl"></i>
+                    <i class="fas fa-code text-4xl"></i>
                 </div>
-                <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">Website Design (Business, One-page, E-commerce)</h3>
-                <p class="text-gray-600 dark:text-gray-300">
-                    Modern, responsive websites tailored for businesses, landing pages, and online stores.
-                </p>
+                <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">Custom Software Solutions</h3>
+                <p class="text-gray-600 dark:text-gray-300">Tailored software solutions built from scratch to meet your specific business requirements and scale with growth.</p>
             </div>
         </div>
     </section>
@@ -321,10 +330,9 @@
         </div>
         
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <!-- Project 1 -->
             <div class="project-card relative rounded-xl overflow-hidden shadow-lg animate-fade-up animate-delay-200">
                 <div class="h-64 overflow-hidden">
-                    <img src="Onetchek1.jpg" alt="Onetchek Project" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                    <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80" alt="Onetchek Project" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
                 </div>
                 <div class="project-overlay absolute inset-0 bg-black/70 flex flex-col justify-center items-center opacity-0 p-6">
                     <h3 class="text-white text-xl font-bold mb-2">Onetchek</h3>
@@ -333,10 +341,9 @@
                 </div>
             </div>
             
-            <!-- Project 2 -->
             <div class="project-card relative rounded-xl overflow-hidden shadow-lg animate-fade-up animate-delay-300">
                 <div class="h-64 overflow-hidden">
-                    <img src="Capture d’écran 2025-07-28 à 20.07.04.png" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                    <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80" alt="Ivonnia Project" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
                 </div>
                 <div class="project-overlay absolute inset-0 bg-black/70 flex flex-col justify-center items-center opacity-0 p-6">
                     <h3 class="text-white text-xl font-bold mb-2">Ivonnia</h3>
@@ -345,7 +352,6 @@
                 </div>
             </div>
             
-            <!-- Project 3 -->
             <div class="project-card relative rounded-xl overflow-hidden shadow-lg animate-fade-up animate-delay-400">
                 <div class="h-64 overflow-hidden">
                     <img src="https://images.unsplash.com/photo-1559526324-593bc073d938?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80" alt="KwikPey Project" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
@@ -357,7 +363,6 @@
                 </div>
             </div>
             
-            <!-- Project 4 -->
             <div class="project-card relative rounded-xl overflow-hidden shadow-lg animate-fade-up animate-delay-500">
                 <div class="h-64 overflow-hidden">
                     <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80" alt="Sitadel Project" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
@@ -369,7 +374,6 @@
                 </div>
             </div>
             
-            <!-- Project 5 -->
             <div class="project-card relative rounded-xl overflow-hidden shadow-lg animate-fade-up animate-delay-600">
                 <div class="h-64 overflow-hidden">
                     <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80" alt="IdeaSpark Project" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
@@ -381,7 +385,6 @@
                 </div>
             </div>
             
-            <!-- Project 6 -->
             <div class="project-card relative rounded-xl overflow-hidden shadow-lg animate-fade-up animate-delay-700">
                 <div class="h-64 overflow-hidden">
                     <img src="https://images.unsplash.com/photo-1559526324-593bc073d938?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80" alt="Haitiaigrant Project" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
@@ -390,18 +393,6 @@
                     <h3 class="text-white text-xl font-bold mb-2">Haitiaigrant</h3>
                     <p class="text-gray-200 text-center mb-4">A digital guide for Haitians abroad: immigration help, legal resources, and community support.</p>
                     <a href="https://www.haitiaigrant.xyz" target="_blank" class="text-white border border-white px-4 py-2 rounded hover:bg-white hover:text-black transition-colors">View Project</a>
-                </div>
-            </div>
-            
-            <!-- Project 7 -->
-            <div class="project-card relative rounded-xl overflow-hidden shadow-lg animate-fade-up animate-delay-800">
-                <div class="h-64 overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80" alt="Haiti Grant Project" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
-                </div>
-                <div class="project-overlay absolute inset-0 bg-black/70 flex flex-col justify-center items-center opacity-0 p-6">
-                    <h3 class="text-white text-xl font-bold mb-2">Haiti Grant</h3>
-                    <p class="text-gray-200 text-center mb-4">GPU compute grant program to empower Haitian youth building AI/ML projects.</p>
-                    <a href="#" class="text-white border border-white px-4 py-2 rounded hover:bg-white hover:text-black transition-colors">View Project</a>
                 </div>
             </div>
         </div>
@@ -415,7 +406,6 @@
         </div>
         
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <!-- Testimonial 1 -->
             <div class="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-md animate-fade-up animate-delay-200">
                 <div class="flex items-center mb-4">
                     <div class="w-12 h-12 rounded-full bg-blue-500 flex items-center justify-center text-white font-bold mr-4">JD</div>
@@ -424,19 +414,12 @@
                         <p class="text-sm text-gray-500 dark:text-gray-400">CEO, Onetchek</p>
                     </div>
                 </div>
-                <p class="text-gray-600 dark:text-gray-300 italic">
-                    "Solvexa Labs transformed our vision into a functional product in record time. Their technical expertise and attention to detail are unmatched."
-                </p>
+                <p class="text-gray-600 dark:text-gray-300 italic">"Solvexa Labs transformed our vision into a functional product in record time. Their technical expertise and attention to detail are unmatched."</p>
                 <div class="mt-4 text-yellow-400">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                 </div>
             </div>
             
-            <!-- Testimonial 2 -->
             <div class="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-md animate-fade-up animate-delay-300">
                 <div class="flex items-center mb-4">
                     <div class="w-12 h-12 rounded-full bg-purple-500 flex items-center justify-center text-white font-bold mr-4">SM</div>
@@ -445,19 +428,12 @@
                         <p class="text-sm text-gray-500 dark:text-gray-400">Founder, Ivonnia</p>
                     </div>
                 </div>
-                <p class="text-gray-600 dark:text-gray-300 italic">
-                    "Working with Solvexa was a game-changer for our startup. They understood our needs and delivered beyond expectations."
-                </p>
+                <p class="text-gray-600 dark:text-gray-300 italic">"Working with Solvexa was a game-changer for our startup. They understood our needs and delivered beyond expectations."</p>
                 <div class="mt-4 text-yellow-400">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                 </div>
             </div>
             
-            <!-- Testimonial 3 -->
             <div class="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-md animate-fade-up animate-delay-400">
                 <div class="flex items-center mb-4">
                     <div class="w-12 h-12 rounded-full bg-green-500 flex items-center justify-center text-white font-bold mr-4">MP</div>
@@ -466,15 +442,9 @@
                         <p class="text-sm text-gray-500 dark:text-gray-400">CTO, KwikPey</p>
                     </div>
                 </div>
-                <p class="text-gray-600 dark:text-gray-300 italic">
-                    "Their ability to solve complex technical challenges while maintaining clean code and documentation is impressive."
-                </p>
+                <p class="text-gray-600 dark:text-gray-300 italic">"Their ability to solve complex technical challenges while maintaining clean code and documentation is impressive."</p>
                 <div class="mt-4 text-yellow-400">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star-half-alt"></i>
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
                 </div>
             </div>
         </div>
@@ -485,7 +455,7 @@
         <div class="max-w-3xl mx-auto">
             <div class="text-center mb-12">
                 <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4 animate-fade-up">Get In Touch</h2>
-                <p class="text-xl text-gray-600 dark:text-gray-300 animate-fade-up animate-delay-100">Got a project in mind? Let's talk.</p>
+                <p class="text-xl text-gray-600 dark:text-gray-300 animate-fade-up animate-delay-100">Got a project in mind? Let's build something amazing together.</p>
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -503,7 +473,7 @@
                             <label for="message" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Your Message</label>
                             <textarea id="message" name="message" rows="4" required class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-light dark:focus:ring-primary-dark focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white"></textarea>
                         </div>
-                        <button type="submit" class="w-full bg-primary-light dark:bg-primary-dark hover:bg-blue-800 dark:hover:bg-blue-400 text-white font-medium py-3 px-6 rounded-lg transition-colors duration-300">Send Message</button>
+                        <button type="submit" class="w-full bg-[#22C55E] hover:bg-[#16a34a] text-white font-medium py-3 px-6 rounded-lg transition-colors duration-300">Send Message</button>
                     </form>
                 </div>
                 
@@ -567,65 +537,9 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-100 dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800 py-12 px-4 sm:px-6 lg:px-8">
-        <div class="max-w-7xl mx-auto">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-                <div class="md:col-span-2">
-                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4">Solvexa Labs</h3>
-                    <p class="text-gray-600 dark:text-gray-300 mb-4">
-                        Digital innovation studio building smart, scalable, and high-impact technology solutions.
-                    </p>
-                    <div class="flex space-x-4">
-                        <button id="footer-theme-toggle" type="button" class="text-gray-500 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-lg p-2">
-                            <i id="footer-theme-icon" class="fas fa-moon"></i>
-                        </button>
-                        <a href="#" class="text-gray-500 dark:text-gray-400 hover:text-primary-light dark:hover:text-primary-dark">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a href="#" class="text-gray-500 dark:text-gray-400 hover:text-primary-light dark:hover:text-primary-dark">
-                            <i class="fab fa-linkedin"></i>
-                        </a>
-                        <a href="#" class="text-gray-500 dark:text-gray-400 hover:text-primary-light dark:hover:text-primary-dark">
-                            <i class="fab fa-github"></i>
-                        </a>
-                    </div>
-                </div>
-                
-                <div>
-                    <h4 class="text-lg font-medium text-gray-900 dark:text-white mb-4">Quick Links</h4>
-                    <ul class="space-y-2">
-                        <li><a href="#home" class="text-gray-600 dark:text-gray-300 hover:text-primary-light dark:hover:text-primary-dark">Home</a></li>
-                        <li><a href="#about" class="text-gray-600 dark:text-gray-300 hover:text-primary-light dark:hover:text-primary-dark">About</a></li>
-                        <li><a href="#services" class="text-gray-600 dark:text-gray-300 hover:text-primary-light dark:hover:text-primary-dark">Services</a></li>
-                        <li><a href="#projects" class="text-gray-600 dark:text-gray-300 hover:text-primary-light dark:hover:text-primary-dark">Projects</a></li>
-                        <li><a href="#contact" class="text-gray-600 dark:text-gray-300 hover:text-primary-light dark:hover:text-primary-dark">Contact</a></li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h4 class="text-lg font-medium text-gray-900 dark:text-white mb-4">Contact</h4>
-                    <ul class="space-y-2">
-                        <li class="flex items-start">
-                            <i class="fas fa-envelope text-gray-500 dark:text-gray-400 mt-1 mr-2"></i>
-                            <a href="mailto:contact@solvexalabs.com" class="text-gray-600 dark:text-gray-300 hover:text-primary-light dark:hover:text-primary-dark">contact@solvexalabs.com</a>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fab fa-whatsapp text-gray-500 dark:text-gray-400 mt-1 mr-2"></i>
-                            <a href="https://wa.me/13056102397" class="text-gray-600 dark:text-gray-300 hover:text-primary-light dark:hover:text-primary-dark">+1 (305) 610-2397</a>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-map-marker-alt text-gray-500 dark:text-gray-400 mt-1 mr-2"></i>
-                            <span class="text-gray-600 dark:text-gray-300">United States</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="mt-12 pt-8 border-t border-gray-200 dark:border-gray-800 text-center">
-                <p class="text-gray-500 dark:text-gray-400">
-                    &copy; 2023 Solvexa Labs. All rights reserved.
-                </p>
-            </div>
+    <footer class="bg-[#050b14] text-gray-300">
+        <div class="max-w-6xl mx-auto px-6 py-8 text-center text-sm text-gray-500">
+            &copy; 2024 Solvexa Labs. All rights reserved.
         </div>
     </footer>
 
@@ -644,7 +558,7 @@
                 });
             });
         });
-        
+
         // Mobile menu toggle
         const mobileMenuButton = document.getElementById('mobile-menu-button');
         const mobileMenu = document.getElementById('mobile-menu');
@@ -652,13 +566,13 @@
         mobileMenuButton.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
         });
-        
+
         // Theme toggle
         const themeToggle = document.getElementById('theme-toggle');
         const themeIcon = document.getElementById('theme-icon');
         const footerThemeToggle = document.getElementById('footer-theme-toggle');
         const footerThemeIcon = document.getElementById('footer-theme-icon');
-        
+
         function toggleTheme() {
             const html = document.documentElement;
             html.classList.toggle('dark');
@@ -673,10 +587,10 @@
                 localStorage.setItem('theme', 'light');
             }
         }
-        
+
         themeToggle.addEventListener('click', toggleTheme);
         footerThemeToggle.addEventListener('click', toggleTheme);
-        
+
         // Check for saved theme preference
         if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
             document.documentElement.classList.add('dark');
@@ -687,7 +601,7 @@
             themeIcon.classList.replace('fa-sun', 'fa-moon');
             footerThemeIcon.classList.replace('fa-sun', 'fa-moon');
         }
-        
+
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -710,7 +624,7 @@
                 }
             });
         });
-        
+
         // Form submission
         const contactForm = document.getElementById('contact-form');
         if (contactForm) {
@@ -732,7 +646,7 @@
                 contactForm.reset();
             });
         }
-        
+
         // Intersection Observer for scroll animations
         const animateOnScroll = () => {
             const elements = document.querySelectorAll('[class*="animate-"]');
@@ -758,7 +672,7 @@
                 observer.observe(element);
             });
         };
-        
+
         // Initialize on DOM load
         document.addEventListener('DOMContentLoaded', () => {
             animateOnScroll();
