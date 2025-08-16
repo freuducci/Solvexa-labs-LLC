@@ -98,6 +98,20 @@
             color:var(--text);
             overflow-x:hidden;
         }
+        /* floating particles */
+        .particle{
+            position:fixed;
+            border-radius:50%;
+            background:#22C55E;
+            opacity:.15;
+            animation:floatParticle linear infinite;
+            pointer-events:none;
+            z-index:0;
+        }
+        @keyframes floatParticle{
+            0%   { transform:translateY(100vh) translateX(0); }
+            100% { transform:translateY(-100px) translateX(calc((var(--i) - 0.5) * 60px)); }
+        }
         .blur-nav{
             position:fixed;top:0;left:0;right:0;z-index:50;
             backdrop-filter:blur(32px) saturate(180%);
@@ -280,7 +294,7 @@
                 <p class="text-gray-600 dark:text-gray-300">Native and cross-platform mobile applications for iOS and Android with beautiful UI/UX and robust backend.</p>
             </div>
             
-            <div class="service-card bg-white dark:bg-gray-800 p-8 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 animate-fade-up animate-delay-300">
+            <div class="service-card p-8 rounded-xl transition-all duration-300 animate-fade-up animate-delay-300">
                 <div class="text-primary-light dark:text-primary-dark mb-4">
                     <i class="fas fa-globe text-4xl"></i>
                 </div>
@@ -288,7 +302,7 @@
                 <p class="text-gray-600 dark:text-gray-300">One-page, corporate, and e-commerce websites with modern designs, fast loading, and SEO optimization.</p>
             </div>
             
-            <div class="service-card bg-white dark:bg-gray-800 p-8 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 animate-fade-up animate-delay-400">
+            <div class="service-card p-8 rounded-xl transition-all duration-300 animate-fade-up animate-delay-400">
                 <div class="text-primary-light dark:text-primary-dark mb-4">
                     <i class="fas fa-wallet text-4xl"></i>
                 </div>
@@ -296,7 +310,7 @@
                 <p class="text-gray-600 dark:text-gray-300">Secure payment solutions, digital wallets, and financial platforms with compliance and scalability.</p>
             </div>
             
-            <div class="service-card bg-white dark:bg-gray-800 p-8 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 animate-fade-up animate-delay-500">
+            <div class="service-card p-8 rounded-xl transition-all duration-300 animate-fade-up animate-delay-500">
                 <div class="text-primary-light dark:text-primary-dark mb-4">
                     <i class="fas fa-robot text-4xl"></i>
                 </div>
@@ -304,7 +318,7 @@
                 <p class="text-gray-600 dark:text-gray-300">Intelligent learning platforms with adaptive algorithms, personalized content, and analytics.</p>
             </div>
             
-            <div class="service-card bg-white dark:bg-gray-800 p-8 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 animate-fade-up animate-delay-600">
+            <div class="service-card p-8 rounded-xl transition-all duration-300 animate-fade-up animate-delay-600">
                 <div class="text-primary-light dark:text-primary-dark mb-4">
                     <i class="fas fa-lightbulb text-4xl"></i>
                 </div>
@@ -312,7 +326,7 @@
                 <p class="text-gray-600 dark:text-gray-300">Rapid prototyping and minimum viable products to validate your idea and attract investors.</p>
             </div>
             
-            <div class="service-card bg-white dark:bg-gray-800 p-8 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 animate-fade-up animate-delay-700">
+            <div class="service-card p-8 rounded-xl transition-all duration-300 animate-fade-up animate-delay-700">
                 <div class="text-primary-light dark:text-primary-dark mb-4">
                     <i class="fas fa-code text-4xl"></i>
                 </div>
@@ -323,79 +337,78 @@
     </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto bg-gray-50 dark:bg-gray-800">
+    <section id="projects" class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         <div class="text-center mb-16">
-            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4 animate-fade-up">Our Projects</h2>
-            <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto animate-fade-up animate-delay-100">Explore some of our recent work and success stories</p>
+            <h2 class="text-3xl md:text-4xl font-bold text-[#F8FAFC] mb-4 animate-fade-up">Recent Work</h2>
+            <p class="text-lg text-[#38BDF8] max-w-2xl mx-auto animate-fade-up animate-delay-100">Explore some of our recent work and success stories</p>
         </div>
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div class="project-card relative rounded-xl overflow-hidden shadow-lg animate-fade-up animate-delay-200">
-                <div class="h-64 overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80" alt="Onetchek Project" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+
+        <div class="relative">
+            <div id="project-slider" class="flex gap-6 snap-x snap-mandatory overflow-x-auto pb-6">
+                <!-- Project 1 -->
+                <div class="flex-shrink-0 w-80 md:w-96 snap-center">
+                    <div class="service-card p-5 rounded-xl">
+                        <div class="h-52 rounded-lg overflow-hidden mb-4">
+                            <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Onetchek" class="w-full h-full object-cover">
+                        </div>
+                        <h3 class="text-lg font-bold text-[#F8FAFC] mb-2">Onetchek</h3>
+                        <p class="text-sm text-gray-300 mb-3">A decentralized neo-bank giving users full control over their money across currencies and borders.</p>
+                        <a href="https://www.onetchek.com" target="_blank" class="inline-block bg-[#22C55E] text-white text-sm px-4 py-2 rounded hover:bg-[#16a34a] transition-colors">Visit Site</a>
+                    </div>
                 </div>
-                <div class="project-overlay absolute inset-0 bg-black/70 flex flex-col justify-center items-center opacity-0 p-6">
-                    <h3 class="text-white text-xl font-bold mb-2">Onetchek</h3>
-                    <p class="text-gray-200 text-center mb-4">A decentralized neo-bank giving users full control over their money across currencies and borders.</p>
-                    <a href="https://www.onetchek.com" target="_blank" class="text-white border border-white px-4 py-2 rounded hover:bg-white hover:text-black transition-colors">View Project</a>
+
+                <!-- Project 2 -->
+                <div class="flex-shrink-0 w-80 md:w-96 snap-center">
+                    <div class="service-card p-5 rounded-xl">
+                        <div class="h-52 rounded-lg overflow-hidden mb-4">
+                            <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Ivonnia" class="w-full h-full object-cover">
+                        </div>
+                        <h3 class="text-lg font-bold text-[#F8FAFC] mb-2">Ivonnia</h3>
+                        <p class="text-sm text-gray-300 mb-3">AI-powered QBank for medical exams, with adaptive learning and voice-based practice.</p>
+                        <a href="https://www.ivonnia.com" target="_blank" class="inline-block bg-[#22C55E] text-white text-sm px-4 py-2 rounded hover:bg-[#16a34a] transition-colors">Visit Site</a>
+                    </div>
                 </div>
-            </div>
-            
-            <div class="project-card relative rounded-xl overflow-hidden shadow-lg animate-fade-up animate-delay-300">
-                <div class="h-64 overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80" alt="Ivonnia Project" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+
+                <!-- Project 3 -->
+                <div class="flex-shrink-0 w-80 md:w-96 snap-center">
+                    <div class="service-card p-5 rounded-xl">
+                        <div class="h-52 rounded-lg overflow-hidden mb-4">
+                            <img src="https://images.unsplash.com/photo-1559526324-593bc073d938?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="KwikPey" class="w-full h-full object-cover">
+                        </div>
+                        <h3 class="text-lg font-bold text-[#F8FAFC] mb-2">KwikPey</h3>
+                        <p class="text-sm text-gray-300 mb-3">A fast and secure mobile wallet app for daily transactions in Haiti and the Caribbean.</p>
+                        <a href="https://www.kwikpey.xyz" target="_blank" class="inline-block bg-[#22C55E] text-white text-sm px-4 py-2 rounded hover:bg-[#16a34a] transition-colors">Visit Site</a>
+                    </div>
                 </div>
-                <div class="project-overlay absolute inset-0 bg-black/70 flex flex-col justify-center items-center opacity-0 p-6">
-                    <h3 class="text-white text-xl font-bold mb-2">Ivonnia</h3>
-                    <p class="text-gray-200 text-center mb-4">AI-powered QBank for USMLE & MCCQE medical exams, with adaptive learning and voice-based practice.</p>
-                    <a href="https://www.ivonnia.com" target="_blank" class="text-white border border-white px-4 py-2 rounded hover:bg-white hover:text-black transition-colors">View Project</a>
-                </div>
-            </div>
-            
-            <div class="project-card relative rounded-xl overflow-hidden shadow-lg animate-fade-up animate-delay-400">
-                <div class="h-64 overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1559526324-593bc073d938?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80" alt="KwikPey Project" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
-                </div>
-                <div class="project-overlay absolute inset-0 bg-black/70 flex flex-col justify-center items-center opacity-0 p-6">
-                    <h3 class="text-white text-xl font-bold mb-2">KwikPey</h3>
-                    <p class="text-gray-200 text-center mb-4">A fast and secure mobile wallet app for daily transactions in Haiti and the Caribbean.</p>
-                    <a href="https://www.kwikpey.xyz" target="_blank" class="text-white border border-white px-4 py-2 rounded hover:bg-white hover:text-black transition-colors">View Project</a>
-                </div>
-            </div>
-            
-            <div class="project-card relative rounded-xl overflow-hidden shadow-lg animate-fade-up animate-delay-500">
-                <div class="h-64 overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80" alt="Sitadel Project" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
-                </div>
-                <div class="project-overlay absolute inset-0 bg-black/70 flex flex-col justify-center items-center opacity-0 p-6">
-                    <h3 class="text-white text-xl font-bold mb-2">Sitadel</h3>
-                    <p class="text-gray-200 text-center mb-4">A no-code/low-code platform to build mobile apps and websites without writing code.</p>
-                    <a href="https://www.sitadel.dev" target="_blank" class="text-white border border-white px-4 py-2 rounded hover:bg-white hover:text-black transition-colors">View Project</a>
-                </div>
-            </div>
-            
-            <div class="project-card relative rounded-xl overflow-hidden shadow-lg animate-fade-up animate-delay-600">
-                <div class="h-64 overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80" alt="IdeaSpark Project" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
-                </div>
-                <div class="project-overlay absolute inset-0 bg-black/70 flex flex-col justify-center items-center opacity-0 p-6">
-                    <h3 class="text-white text-xl font-bold mb-2">IdeaSpark</h3>
-                    <p class="text-gray-200 text-center mb-4">An AI-powered idea generator and validation tool for aspiring entrepreneurs.</p>
-                    <a href="https://www.ideaspark.xyz" target="_blank" class="text-white border border-white px-4 py-2 rounded hover:bg-white hover:text-black transition-colors">View Project</a>
+
+                <!-- Project 4 -->
+                <div class="flex-shrink-0 w-80 md:w-96 snap-center">
+                    <div class="service-card p-5 rounded-xl">
+                        <div class="h-52 rounded-lg overflow-hidden mb-4">
+                            <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Sitadel" class="w-full h-full object-cover">
+                        </div>
+                        <h3 class="text-lg font-bold text-[#F8FAFC] mb-2">Sitadel</h3>
+                        <p class="text-sm text-gray-300 mb-3">A no-code/low-code platform to build mobile apps and websites without writing code.</p>
+                        <a href="https://www.sitadel.dev" target="_blank" class="inline-block bg-[#22C55E] text-white text-sm px-4 py-2 rounded hover:bg-[#16a34a] transition-colors">Visit Site</a>
+                    </div>
                 </div>
             </div>
-            
-            <div class="project-card relative rounded-xl overflow-hidden shadow-lg animate-fade-up animate-delay-700">
-                <div class="h-64 overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1559526324-593bc073d938?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80" alt="Haitiaigrant Project" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
-                </div>
-                <div class="project-overlay absolute inset-0 bg-black/70 flex flex-col justify-center items-center opacity-0 p-6">
-                    <h3 class="text-white text-xl font-bold mb-2">Haitiaigrant</h3>
-                    <p class="text-gray-200 text-center mb-4">A digital guide for Haitians abroad: immigration help, legal resources, and community support.</p>
-                    <a href="https://www.haitiaigrant.xyz" target="_blank" class="text-white border border-white px-4 py-2 rounded hover:bg-white hover:text-black transition-colors">View Project</a>
-                </div>
-            </div>
+
+            <!-- Slider navigation -->
+            <button onclick="scrollSlider(-300)" class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-10 bg-[#22C55E]/80 hover:bg-[#22C55E] text-white rounded-full p-2 transition">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button onclick="scrollSlider(300)" class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-10 bg-[#22C55E]/80 hover:bg-[#22C55E] text-white rounded-full p-2 transition">
+                <i class="fas fa-chevron-right"></i>
+            </button>
         </div>
+
+        <script>
+            function scrollSlider(offset) {
+                const slider = document.getElementById('project-slider');
+                slider.scrollBy({ left: offset, behavior: 'smooth' });
+            }
+        </script>
     </section>
 
     <!-- Testimonials Section -->
