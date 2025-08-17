@@ -1,12 +1,16 @@
 <!DOCTYPE html>
-<html lang="en" class="light">
+<html lang="en" class="">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Solvexa Labs - Digital Innovation Studio</title>
+
+    <!-- Tailwind & Icons -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@700;800&display=swap" rel="stylesheet">
+
+    <!-- Config -->
     <script>
         tailwind.config = {
             darkMode: 'class',
@@ -71,8 +75,8 @@
                             '100%': { opacity: '1', transform: 'translateX(0)' },
                         },
                         pulseGlow: {
-                            '0%, 100%': { boxShadow: '0 0 5px rgba(30, 58, 138, 0.5)' },
-                            '50%': { boxShadow: '0 0 20px rgba(30, 58, 138, 0.8)' },
+                            '0%, 100%': { boxShadow: '0 0 5px rgba(34, 197, 94, 0.5)' },
+                            '50%': { boxShadow: '0 0 20px rgba(34, 197, 94, 0.8)' },
                         },
                         float: {
                             '0%, 100%': { transform: 'translateY(0px)' },
@@ -81,117 +85,168 @@
                     }
                 }
             }
-        }
+        };
     </script>
+
     <style>
-        :root{
-            --bg:#050b14;
-            --accent1:#22C55E;
-            --accent2:#38BDF8;
-            --text:#E5E7EB;
-            --card:#0a101a;
+        :root {
+            --bg: #050b14;
+            --accent1: #22C55E;
+            --accent2: #38BDF8;
+            --text: #E5E7EB;
+            --card: #0a101a;
         }
-        *{margin:0;padding:0;box-sizing:border-box}
-        body{
-            font-family:'Inter',sans-serif;
-            background:var(--bg);
-            color:var(--text);
-            overflow-x:hidden;
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            overflow-x: hidden;
         }
-        /* floating particles */
-        .particle{
-            position:fixed;
-            border-radius:50%;
-            background:#22C55E;
-            opacity:.15;
-            animation:floatParticle linear infinite;
-            pointer-events:none;
-            z-index:0;
+
+        .particle {
+            position: fixed;
+            border-radius: 50%;
+            background: #22C55E;
+            opacity: 0.15;
+            animation: floatParticle linear infinite;
+            pointer-events: none;
+            z-index: 0;
         }
-        @keyframes floatParticle{
-            0%   { transform:translateY(100vh) translateX(0); }
-            100% { transform:translateY(-100px) translateX(calc((var(--i) - 0.5) * 60px)); }
+
+        @keyframes floatParticle {
+            0%   { transform: translateY(100vh) translateX(0); }
+            100% { transform: translateY(-100px) translateX(calc((var(--i) - 0.5) * 60px)); }
         }
-        .blur-nav{
-            position:fixed;top:0;left:0;right:0;z-index:50;
-            backdrop-filter:blur(32px) saturate(180%);
-            -webkit-backdrop-filter:blur(32px) saturate(180%);
-            background:rgba(5,11,20,.75);
-            border-bottom:1px solid rgba(34,197,94,.25);
+
+        .blur-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 50;
+            backdrop-filter: blur(32px) saturate(180%);
+            -webkit-backdrop-filter: blur(32px) saturate(180%);
+            background: rgba(5, 11, 20, .75);
+            border-bottom: 1px solid rgba(34, 197, 94, .25);
         }
-        .hero-title{
-            font-family:'Poppins',sans-serif;
-            font-size:clamp(2.4rem,5vw,4rem);
-            line-height:1.1;
-            color:#FFFFFF;
+
+        .hero-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(2.4rem, 5vw, 4rem);
+            line-height: 1.1;
+            color: #FFFFFF;
         }
-        .service-card,.project-card{
-            background:var(--card);
-            border:1px solid rgba(56,189,248,.15);
-            border-radius:1rem;
-            transition:all .4s ease;
-            backdrop-filter:blur(12px);
-            overflow:hidden;
+
+        .service-card, .project-card {
+            background: var(--card);
+            border: 1px solid rgba(56, 189, 248, .15);
+            border-radius: 1rem;
+            transition: all .4s ease;
+            backdrop-filter: blur(12px);
+            overflow: hidden;
         }
-        .service-card:hover,.project-card:hover{
-            transform:translateY(-6px) scale(1.02);
-            border-color:var(--accent1);
-            box-shadow:0 0 30px rgba(34,197,94,.35);
+
+        .service-card:hover, .project-card:hover {
+            transform: translateY(-6px) scale(1.02);
+            border-color: var(--accent1);
+            box-shadow: 0 0 30px rgba(34, 197, 94, .35);
         }
-        .gradient-bg{
+
+        .gradient-bg {
             background:
-              radial-gradient(circle at 20% 50%,rgba(34,197,94,.25) 0%,transparent 55%),
-              radial-gradient(circle at 80% 80%,rgba(56,189,248,.25) 0%,transparent 55%),
-              linear-gradient(135deg,var(--bg) 0%,#0a0f1a 100%);
+                radial-gradient(circle at 20% 50%, rgba(34, 197, 94, .25) 0%, transparent 55%),
+                radial-gradient(circle at 80% 80%, rgba(56, 189, 248, .25) 0%, transparent 55%),
+                linear-gradient(135deg, var(--bg) 0%, #0a0f1a 100%);
         }
-        .neural-grid{
+
+        .neural-grid {
             background:
-              linear-gradient(rgba(56,189,248,.06) 1px,transparent 1px),
-              linear-gradient(90deg,rgba(56,189,248,.06) 1px,transparent 1px);
-            background-size:60px 60px;
-            animation:grid-move 25s linear infinite;
+                linear-gradient(rgba(56, 189, 248, .06) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(56, 189, 248, .06) 1px, transparent 1px);
+            background-size: 60px 60px;
+            animation: grid-move 25s linear infinite;
         }
-        @keyframes grid-move{0%{background-position:0 0;}100%{background-position:60px 60px;}}
-        .cyber-border{border:1px solid;border-image:linear-gradient(45deg,var(--accent1),var(--accent2)) 1;}
+
+        @keyframes grid-move { 0% { background-position: 0 0; } 100% { background-position: 60px 60px; } }
+
+        .cyber-border { border: 1px solid; border-image: linear-gradient(45deg, var(--accent1), var(--accent2)) 1; }
+
+        /* typing effect */
+        .typing-effect {
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 3px solid #22C55E;
+            animation: typing 3s steps(30, end) 1s 1 normal both,
+                       blink 1s steps(1) infinite;
+        }
+        @keyframes typing {
+            from { width: 0; }
+            to   { width: 100%; }
+        }
+        @keyframes blink {
+            50% { border-color: transparent; }
+        }
+
+        /* form focus */
+        input:focus, textarea:focus {
+            outline: 2px solid #22C55E;
+            outline-offset: 2px;
+        }
+
+        /* glowing button */
+        .glow {
+            position: relative;
+            overflow: hidden;
+        }
+        .glow::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,.2), transparent);
+            transition: left .6s;
+        }
+        .glow:hover::before { left: 100%; }
     </style>
 </head>
 <body>
     <!-- WhatsApp Floating Button -->
     <a href="https://wa.me/15148674312?text=Hello%20Solvexa%20Labs%2C%20I%27d%20like%20to%20talk%20about%20a%20project"
-        class="fixed bottom-8 right-8 z-50 bg-green-500 hover:bg-green-600 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-110 animate-pulse-glow">
-        <i class="fab fa-whatsapp text-2xl"></i>
+       class="fixed bottom-8 right-8 z-50 bg-green-500 hover:bg-green-600 text-white w-16 h-16 rounded-full flex items-center justify-center shadow-xl transition-all duration-300 hover:scale-110 animate-pulse-glow">
+        <i class="fab fa-whatsapp text-3xl"></i>
     </a>
 
     <!-- Header/Navbar -->
     <header class="fixed w-full z-40">
-        <nav class="blur-nav bg-white/80 dark:bg-gray-900/80 border-b border-gray-200 dark:border-gray-800 transition-colors duration-300">
+        <nav class="blur-nav bg-gray-900/80 border-b border-gray-800">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex justify-between h-16">
                     <div class="flex items-center">
                         <div class="flex-shrink-0 flex items-center">
-                            <span class="text-primary-light dark:text-primary-dark font-bold text-xl">Solvexa Labs</span>
+                            <span class="text-primary-dark font-bold text-2xl tracking-tight">Solvexa Labs</span>
                         </div>
                         <div class="hidden md:ml-10 md:flex md:space-x-8">
-                            <a href="#home" class="border-primary-light dark:border-primary-dark text-primary-light dark:text-primary-dark inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Home</a>
-                            <a href="#about" class="border-transparent text-gray-500 dark:text-gray-300 hover:border-gray-300 hover:text-gray-700 dark:hover:text-gray-100 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">About</a>
-                            <a href="#services" class="border-transparent text-gray-500 dark:text-gray-300 hover:border-gray-300 hover:text-gray-700 dark:hover:text-gray-100 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Services</a>
-                            <a href="#projects" class="border-transparent text-gray-500 dark:text-gray-300 hover:border-gray-300 hover:text-gray-700 dark:hover:text-gray-100 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Projects</a>
-                            <a href="#contact" class="border-transparent text-gray-500 dark:text-gray-300 hover:border-gray-300 hover:text-gray-700 dark:hover:text-gray-100 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Contact</a>
+                            <a href="#home" class="border-primary-dark text-primary-dark inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Home</a>
+                            <a href="#about" class="border-transparent text-gray-300 hover:border-gray-300 hover:text-gray-100 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">About</a>
+                            <a href="#services" class="border-transparent text-gray-300 hover:border-gray-300 hover:text-gray-100 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Services</a>
+                            <a href="#projects" class="border-transparent text-gray-300 hover:border-gray-300 hover:text-gray-100 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Projects</a>
+                            <a href="#contact" class="border-transparent text-gray-300 hover:border-gray-300 hover:text-gray-100 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Contact</a>
                         </div>
                     </div>
                     <div class="flex items-center">
-                        <button id="theme-toggle" type="button" class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg p-2">
-                            <i id="theme-icon" class="fas fa-moon"></i>
-                        </button>
                         <div class="md:hidden flex items-center">
-                            <button id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none">
+                            <button id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-700 focus:outline-none">
                                 <i class="fas fa-bars"></i>
                             </button>
                         </div>
                     </div>
                 </div>
             </div>
-            <div id="mobile-menu" class="hidden md:hidden bg-[#050b14] transition-colors duration-300">
+            <div id="mobile-menu" class="hidden md:hidden bg-[#050b14]">
                 <div class="pt-2 pb-3 space-y-1">
                     <a href="#home" class="bg-[#22C55E]/10 text-[#22C55E] block pl-3 pr-4 py-2 border-l-4 border-[#22C55E] text-base font-medium">Home</a>
                     <a href="#about" class="border-transparent text-gray-300 hover:bg-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">About</a>
@@ -201,6 +256,7 @@
                 </div>
             </div>
         </nav>
+    </nav>
     </header>
 
     <!-- Hero Section -->
@@ -213,18 +269,20 @@
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                 <div class="text-center lg:text-left">
                     <h1 class="hero-title text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-6 animate-fade-up">
-                        <span class="typing-effect">Turning Ideas into Digital Solutions</span>
+                        <span class="typing-effect">Turning Ideas into<br>Digital Solutions</span>
                     </h1>
-                    <p class="text-xl md:text-2xl text-blue-100 max-w-2xl mx-auto lg:mx-0 mb-10 animate-fade-up animate-delay-100">We build scalable, smart, and beautiful digital products with cutting-edge technology.</p>
+                    <p class="text-xl md:text-2xl text-blue-100 max-w-2xl mx-auto lg:mx-0 mb-10 animate-fade-up animate-delay-100">
+                        We build scalable, smart, and beautiful digital products with cutting-edge technology.
+                    </p>
                     <div class="flex flex-col sm:flex-row justify-center lg:justify-start gap-4 animate-fade-up animate-delay-200">
-                        <a href="#contact" class="inline-block bg-[#22C55E] text-white hover:bg-[#16a34a] font-bold py-3 px-8 rounded-lg glow transition-all duration-300 transform hover:scale-105 hover:shadow-[0_0_30px_rgba(34,197,94,0.5)]">Let's Build Together</a>
+                        <a href="#contact" class="glow inline-block bg-[#22C55E] text-white hover:bg-[#16a34a] font-bold py-3 px-8 rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-[0_0_30px_rgba(34,197,94,0.5)]">Let's Build Together</a>
                         <a href="#projects" class="inline-block bg-transparent border-2 border-[#38BDF8] text-[#38BDF8] hover:bg-[#38BDF8]/10 font-bold py-3 px-8 rounded-lg transition-all duration-300 hover:shadow-[0_0_30px_rgba(56,189,248,0.3)]">View Our Work</a>
                     </div>
                 </div>
                 <div class="flex justify-center">
                     <div class="relative">
                         <div class="w-64 h-64 md:w-80 md:h-80 bg-white/20 rounded-full absolute -top-6 -left-6 z-0 animate-float"></div>
-                        <div class="w-64 h-64 md:w-80 md:h-80 bg-white/20 rounded-full absolute -bottom-6 -right-6 z-0 animate-float" style="animation-delay: -1.5s;"></div>
+                        <div class="w-64 h-64 md:w-80 md:h-80 bg-white/20 rounded-full absolute -bottom-6 -right-6 z-0 animate-float" style="animation-delay:-1.5s;"></div>
                         <div class="relative z-10 rounded-xl w-full h-64 md:h-80 overflow-hidden shadow-2xl">
                             <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80" alt="Digital Innovation" class="w-full h-full object-cover">
                         </div>
@@ -235,7 +293,7 @@
     </section>
 
     <!-- About Section -->
-    <section id="about" class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    <section id="about" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div class="order-2 lg:order-1">
                 <div class="rounded-xl w-full h-96 overflow-hidden shadow-lg">
@@ -249,27 +307,19 @@
                 </p>
                 <div class="grid grid-cols-2 gap-6 mb-8">
                     <div class="flex items-center">
-                        <div class="text-primary-light dark:text-primary-dark mr-3">
-                            <i class="fas fa-check-circle text-xl"></i>
-                        </div>
+                        <div class="text-primary-light dark:text-primary-dark mr-3"><i class="fas fa-check-circle text-xl"></i></div>
                         <span class="font-medium">Innovative Solutions</span>
                     </div>
                     <div class="flex items-center">
-                        <div class="text-primary-light dark:text-primary-dark mr-3">
-                            <i class="fas fa-check-circle text-xl"></i>
-                        </div>
+                        <div class="text-primary-light dark:text-primary-dark mr-3"><i class="fas fa-check-circle text-xl"></i></div>
                         <span class="font-medium">Client-Centric Approach</span>
                     </div>
                     <div class="flex items-center">
-                        <div class="text-primary-light dark:text-primary-dark mr-3">
-                            <i class="fas fa-check-circle text-xl"></i>
-                        </div>
+                        <div class="text-primary-light dark:text-primary-dark mr-3"><i class="fas fa-check-circle text-xl"></i></div>
                         <span class="font-medium">Agile Development</span>
                     </div>
                     <div class="flex items-center">
-                        <div class="text-primary-light dark:text-primary-dark mr-3">
-                            <i class="fas fa-check-circle text-xl"></i>
-                        </div>
+                        <div class="text-primary-light dark:text-primary-dark mr-3"><i class="fas fa-check-circle text-xl"></i></div>
                         <span class="font-medium">Global Expertise</span>
                     </div>
                 </div>
@@ -279,57 +329,45 @@
     </section>
 
     <!-- Services Section -->
-    <section id="services" class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    <section id="services" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         <div class="text-center mb-16">
             <h2 class="text-3xl md:text-4xl font-bold text-[#F8FAFC] mb-4 animate-fade-up">Our Services</h2>
             <p class="text-lg text-[#38BDF8] max-w-2xl mx-auto animate-fade-up animate-delay-100">We offer end-to-end digital product development services tailored to your needs</p>
         </div>
-        
+
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <div class="service-card p-8 rounded-xl transition-all duration-300 animate-fade-up animate-delay-200">
-                <div class="text-primary-light dark:text-primary-dark mb-4">
-                    <i class="fas fa-mobile-alt text-4xl"></i>
-                </div>
+                <div class="text-primary-light dark:text-primary-dark mb-4"><i class="fas fa-mobile-alt text-4xl"></i></div>
                 <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">Mobile App Development</h3>
                 <p class="text-gray-600 dark:text-gray-300">Native and cross-platform mobile applications for iOS and Android with beautiful UI/UX and robust backend.</p>
             </div>
-            
+
             <div class="service-card p-8 rounded-xl transition-all duration-300 animate-fade-up animate-delay-300">
-                <div class="text-primary-light dark:text-primary-dark mb-4">
-                    <i class="fas fa-globe text-4xl"></i>
-                </div>
+                <div class="text-primary-light dark:text-primary-dark mb-4"><i class="fas fa-globe text-4xl"></i></div>
                 <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">Website Development</h3>
                 <p class="text-gray-600 dark:text-gray-300">One-page, corporate, and e-commerce websites with modern designs, fast loading, and SEO optimization.</p>
             </div>
-            
+
             <div class="service-card p-8 rounded-xl transition-all duration-300 animate-fade-up animate-delay-400">
-                <div class="text-primary-light dark:text-primary-dark mb-4">
-                    <i class="fas fa-wallet text-4xl"></i>
-                </div>
+                <div class="text-primary-light dark:text-primary-dark mb-4"><i class="fas fa-wallet text-4xl"></i></div>
                 <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">Fintech & Wallet Solutions</h3>
                 <p class="text-gray-600 dark:text-gray-300">Secure payment solutions, digital wallets, and financial platforms with compliance and scalability.</p>
             </div>
-            
+
             <div class="service-card p-8 rounded-xl transition-all duration-300 animate-fade-up animate-delay-500">
-                <div class="text-primary-light dark:text-primary-dark mb-4">
-                    <i class="fas fa-robot text-4xl"></i>
-                </div>
+                <div class="text-primary-light dark:text-primary-dark mb-4"><i class="fas fa-robot text-4xl"></i></div>
                 <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">AI-Powered EdTech Tools</h3>
                 <p class="text-gray-600 dark:text-gray-300">Intelligent learning platforms with adaptive algorithms, personalized content, and analytics.</p>
             </div>
-            
+
             <div class="service-card p-8 rounded-xl transition-all duration-300 animate-fade-up animate-delay-600">
-                <div class="text-primary-light dark:text-primary-dark mb-4">
-                    <i class="fas fa-lightbulb text-4xl"></i>
-                </div>
+                <div class="text-primary-light dark:text-primary-dark mb-4"><i class="fas fa-lightbulb text-4xl"></i></div>
                 <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">Startup MVP & Prototype Building</h3>
                 <p class="text-gray-600 dark:text-gray-300">Rapid prototyping and minimum viable products to validate your idea and attract investors.</p>
             </div>
-            
+
             <div class="service-card p-8 rounded-xl transition-all duration-300 animate-fade-up animate-delay-700">
-                <div class="text-primary-light dark:text-primary-dark mb-4">
-                    <i class="fas fa-code text-4xl"></i>
-                </div>
+                <div class="text-primary-light dark:text-primary-dark mb-4"><i class="fas fa-code text-4xl"></i></div>
                 <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">Custom Software Solutions</h3>
                 <p class="text-gray-600 dark:text-gray-300">Tailored software solutions built from scratch to meet your specific business requirements and scale with growth.</p>
             </div>
@@ -337,7 +375,7 @@
     </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    <section id="projects" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         <div class="text-center mb-16">
             <h2 class="text-3xl md:text-4xl font-bold text-[#F8FAFC] mb-4 animate-fade-up">Recent Work</h2>
             <p class="text-lg text-[#38BDF8] max-w-2xl mx-auto animate-fade-up animate-delay-100">Explore some of our recent work and success stories</p>
@@ -346,7 +384,7 @@
         <div class="relative">
             <div id="project-slider" class="flex gap-6 snap-x snap-mandatory overflow-x-auto pb-6">
                 <!-- Project 1 -->
-                <div class="flex-shrink-0 w-80 md:w-96 snap-center">
+                <div class="flex-shrink-0 w-[calc(100vw-2.5rem)] md:w-96 snap-center">
                     <div class="service-card p-5 rounded-xl">
                         <div class="h-52 rounded-lg overflow-hidden mb-4">
                             <img src="Onetchek1.jpg">
@@ -395,10 +433,10 @@
             </div>
 
             <!-- Slider navigation -->
-            <button onclick="scrollSlider(-300)" class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-10 bg-[#22C55E]/80 hover:bg-[#22C55E] text-white rounded-full p-2 transition">
+            <button onclick="scrollSlider(-280)" class="absolute left-1 top-1/2 -translate-y-1/2 z-10 bg-[#22C55E]/90 hover:bg-[#22C55E] text-white rounded-full p-2 transition text-sm">
                 <i class="fas fa-chevron-left"></i>
             </button>
-            <button onclick="scrollSlider(300)" class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-10 bg-[#22C55E]/80 hover:bg-[#22C55E] text-white rounded-full p-2 transition">
+            <button onclick="scrollSlider(280)" class="absolute right-1 top-1/2 -translate-y-1/2 z-10 bg-[#22C55E]/90 hover:bg-[#22C55E] text-white rounded-full p-2 transition text-sm">
                 <i class="fas fa-chevron-right"></i>
             </button>
         </div>
@@ -412,12 +450,12 @@
     </section>
 
     <!-- Testimonials Section -->
-    <section class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    <section class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         <div class="text-center mb-16">
             <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4 animate-fade-up">What Our Clients Say</h2>
             <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto animate-fade-up animate-delay-100">Hear from founders and organizations we've worked with</p>
         </div>
-        
+
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <div class="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-md animate-fade-up animate-delay-200">
                 <div class="flex items-center mb-4">
@@ -428,11 +466,9 @@
                     </div>
                 </div>
                 <p class="text-gray-600 dark:text-gray-300 italic">"Solvexa Labs transformed our vision into a functional product in record time. Their technical expertise and attention to detail are unmatched."</p>
-                <div class="mt-4 text-yellow-400">
-                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                </div>
+                <div class="mt-4 text-yellow-400"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
             </div>
-            
+
             <div class="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-md animate-fade-up animate-delay-300">
                 <div class="flex items-center mb-4">
                     <div class="w-12 h-12 rounded-full bg-purple-500 flex items-center justify-center text-white font-bold mr-4">SM</div>
@@ -442,11 +478,9 @@
                     </div>
                 </div>
                 <p class="text-gray-600 dark:text-gray-300 italic">"Working with Solvexa was a game-changer for our startup. They understood our needs and delivered beyond expectations."</p>
-                <div class="mt-4 text-yellow-400">
-                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                </div>
+                <div class="mt-4 text-yellow-400"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
             </div>
-            
+
             <div class="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-md animate-fade-up animate-delay-400">
                 <div class="flex items-center mb-4">
                     <div class="w-12 h-12 rounded-full bg-green-500 flex items-center justify-center text-white font-bold mr-4">MP</div>
@@ -456,91 +490,75 @@
                     </div>
                 </div>
                 <p class="text-gray-600 dark:text-gray-300 italic">"Their ability to solve complex technical challenges while maintaining clean code and documentation is impressive."</p>
-                <div class="mt-4 text-yellow-400">
-                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
-                </div>
+                <div class="mt-4 text-yellow-400"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto bg-gray-50 dark:bg-gray-800 rounded-xl">
+    <section id="contact" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto bg-gray-50 dark:bg-gray-800 rounded-xl">
         <div class="max-w-3xl mx-auto">
             <div class="text-center mb-12">
                 <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4 animate-fade-up">Get In Touch</h2>
                 <p class="text-xl text-gray-600 dark:text-gray-300 animate-fade-up animate-delay-100">Got a project in mind? Let's build something amazing together.</p>
             </div>
-            
+
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div class="animate-fade-up animate-delay-200">
                     <form id="contact-form" class="space-y-6">
                         <div>
                             <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Your Name</label>
-                            <input type="text" id="name" name="name" required class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-light dark:focus:ring-primary-dark focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white">
+                            <input type="text" id="name" name="name" required class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white">
                         </div>
                         <div>
                             <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Email Address</label>
-                            <input type="email" id="email" name="email" required class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-light dark:focus:ring-primary-dark focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white">
+                            <input type="email" id="email" name="email" required class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white">
                         </div>
                         <div>
                             <label for="message" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Your Message</label>
-                            <textarea id="message" name="message" rows="4" required class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-light dark:focus:ring-primary-dark focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white"></textarea>
+                            <textarea id="message" name="message" rows="4" required class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white"></textarea>
                         </div>
                         <button type="submit" class="w-full bg-[#22C55E] hover:bg-[#16a34a] text-white font-medium py-3 px-6 rounded-lg transition-colors duration-300">Send Message</button>
                     </form>
                 </div>
-                
+
                 <div class="animate-fade-up animate-delay-300">
                     <div class="bg-white dark:bg-gray-700 p-8 rounded-xl shadow-md h-full">
                         <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-6">Contact Information</h3>
-                        
+
                         <div class="space-y-4">
                             <div class="flex items-start">
-                                <div class="flex-shrink-0 text-primary-light dark:text-primary-dark">
-                                    <i class="fas fa-envelope text-xl"></i>
-                                </div>
+                                <div class="flex-shrink-0 text-primary-light dark:text-primary-dark"><i class="fas fa-envelope text-xl"></i></div>
                                 <div class="ml-3">
                                     <p class="text-sm font-medium text-gray-500 dark:text-gray-400">Email</p>
                                     <a href="mailto:contact@solvexalabs.com" class="text-base text-gray-900 dark:text-white hover:text-primary-light dark:hover:text-primary-dark">contact@solvexalabs.com</a>
                                 </div>
                             </div>
-                            
+
                             <div class="flex items-start">
-                                <div class="flex-shrink-0 text-primary-light dark:text-primary-dark">
-                                    <i class="fab fa-whatsapp text-xl"></i>
-                                </div>
+                                <div class="flex-shrink-0 text-primary-light dark:text-primary-dark"><i class="fab fa-whatsapp text-xl"></i></div>
                                 <div class="ml-3">
                                     <p class="text-sm font-medium text-gray-500 dark:text-gray-400">WhatsApp</p>
                                     <a href="https://wa.me/13056102397" class="text-base text-gray-900 dark:text-white hover:text-primary-light dark:hover:text-primary-dark">+1 (305) 610-2397</a>
                                 </div>
                             </div>
-                            
+
                             <div class="flex items-start">
-                                <div class="flex-shrink-0 text-primary-light dark:text-primary-dark">
-                                    <i class="fas fa-map-marker-alt text-xl"></i>
-                                </div>
+                                <div class="flex-shrink-0 text-primary-light dark:text-primary-dark"><i class="fas fa-map-marker-alt text-xl"></i></div>
                                 <div class="ml-3">
                                     <p class="text-sm font-medium text-gray-500 dark:text-gray-400">Location</p>
                                     <p class="text-base text-gray-900 dark:text-white">United States</p>
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div class="mt-8">
                             <h4 class="text-lg font-medium text-gray-900 dark:text-white mb-4">Connect With Us</h4>
                             <div class="flex space-x-4">
-                                <a href="#" class="text-gray-500 dark:text-gray-400 hover:text-primary-light dark:hover:text-primary-dark">
-                                    <i class="fab fa-twitter text-xl"></i>
-                                </a>
-                                <a href="#" class="text-gray-500 dark:text-gray-400 hover:text-primary-light dark:hover:text-primary-dark">
-                                    <i class="fab fa-linkedin text-xl"></i>
-                                </a>
-                                <a href="#" class="text-gray-500 dark:text-gray-400 hover:text-primary-light dark:hover:text-primary-dark">
-                                    <i class="fab fa-github text-xl"></i>
-                                </a>
-                                <a href="#" class="text-gray-500 dark:text-gray-400 hover:text-primary-light dark:hover:text-primary-dark">
-                                    <i class="fab fa-instagram text-xl"></i>
-                                </a>
+                                <a href="#" class="text-gray-500 dark:text-gray-400 hover:text-primary-light dark:hover:text-primary-dark"><i class="fab fa-twitter text-xl"></i></a>
+                                <a href="#" class="text-gray-500 dark:text-gray-400 hover:text-primary-light dark:hover:text-primary-dark"><i class="fab fa-linkedin text-xl"></i></a>
+                                <a href="#" class="text-gray-500 dark:text-gray-400 hover:text-primary-light dark:hover:text-primary-dark"><i class="fab fa-github text-xl"></i></a>
+                                <a href="#" class="text-gray-500 dark:text-gray-400 hover:text-primary-light dark:hover:text-primary-dark"><i class="fab fa-instagram text-xl"></i></a>
                             </div>
                         </div>
                     </div>
@@ -552,143 +570,52 @@
     <!-- Footer -->
     <footer class="bg-[#050b14] text-gray-300">
         <div class="max-w-6xl mx-auto px-6 py-8 text-center text-sm text-gray-500">
-            &copy; 2024 Solvexa Labs. All rights reserved.
+            Developed by Solvexa Labs © 2025
         </div>
     </footer>
 
+    <!-- Particles -->
     <script>
-        // Project card hover effect
-        document.addEventListener('DOMContentLoaded', function() {
-            const projectCards = document.querySelectorAll('.project-card');
-            
-            projectCards.forEach(card => {
-                card.addEventListener('mouseenter', function() {
-                    this.querySelector('.project-overlay').style.opacity = '1';
-                });
-                
-                card.addEventListener('mouseleave', function() {
-                    this.querySelector('.project-overlay').style.opacity = '0';
-                });
-            });
-        });
-
-        // Mobile menu toggle
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
-        
-        mobileMenuButton.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-
-        // Theme toggle
-        const themeToggle = document.getElementById('theme-toggle');
-        const themeIcon = document.getElementById('theme-icon');
-        const footerThemeToggle = document.getElementById('footer-theme-toggle');
-        const footerThemeIcon = document.getElementById('footer-theme-icon');
-
-        function toggleTheme() {
-            const html = document.documentElement;
-            html.classList.toggle('dark');
-            
-            if (html.classList.contains('dark')) {
-                themeIcon.classList.replace('fa-moon', 'fa-sun');
-                footerThemeIcon.classList.replace('fa-moon', 'fa-sun');
-                localStorage.setItem('theme', 'dark');
-            } else {
-                themeIcon.classList.replace('fa-sun', 'fa-moon');
-                footerThemeIcon.classList.replace('fa-sun', 'fa-moon');
-                localStorage.setItem('theme', 'light');
+        // create floating particles
+        (() => {
+            const count = 20;
+            for (let i = 0; i < count; i++) {
+                const p = document.createElement('div');
+                p.className = 'particle';
+                p.style.width = Math.random() * 6 + 2 + 'px';
+                p.style.height = p.style.width;
+                p.style.left = Math.random() * 100 + 'vw';
+                p.style.setProperty('--i', Math.random());
+                p.style.animationDuration = (Math.random() * 60 + 40) + 's';
+                document.body.appendChild(p);
             }
-        }
+        })();
 
-        themeToggle.addEventListener('click', toggleTheme);
-        footerThemeToggle.addEventListener('click', toggleTheme);
+        // load dark theme by default
+        document.documentElement.classList.add('dark');
 
-        // Check for saved theme preference
-        if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            document.documentElement.classList.add('dark');
-            themeIcon.classList.replace('fa-moon', 'fa-sun');
-            footerThemeIcon.classList.replace('fa-moon', 'fa-sun');
-        } else {
-            document.documentElement.classList.remove('dark');
-            themeIcon.classList.replace('fa-sun', 'fa-moon');
-            footerThemeIcon.classList.replace('fa-sun', 'fa-moon');
-        }
+        // mobile menu
+        document.getElementById('mobile-menu-button').addEventListener('click', () => {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
 
-        // Smooth scrolling for anchor links
+        // smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                    
-                    // Close mobile menu if open
-                    if (!mobileMenu.classList.contains('hidden')) {
-                        mobileMenu.classList.add('hidden');
-                    }
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    document.getElementById('mobile-menu').classList.add('hidden');
                 }
             });
         });
 
-        // Form submission
-        const contactForm = document.getElementById('contact-form');
-        if (contactForm) {
-            contactForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                // Get form values
-                const name = document.getElementById('name').value;
-                const email = document.getElementById('email').value;
-                const message = document.getElementById('message').value;
-                
-                // Here you would typically send the data to your server
-                console.log('Form submitted:', { name, email, message });
-                
-                // Show success message
-                alert('Thank you for your message! We will get back to you soon.');
-                
-                // Reset form
-                contactForm.reset();
-            });
-        }
-
-        // Intersection Observer for scroll animations
-        const animateOnScroll = () => {
-            const elements = document.querySelectorAll('[class*="animate-"]');
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const element = entry.target;
-                        const animationClasses = Array.from(element.classList).filter(cls => cls.startsWith('animate-'));
-                        
-                        animationClasses.forEach(animationClass => {
-                            element.classList.add(animationClass);
-                        });
-                        
-                        observer.unobserve(element);
-                    }
-                });
-            }, {
-                threshold: 0.1
-            });
-            
-            elements.forEach(element => {
-                observer.observe(element);
-            });
-        };
-
-        // Initialize on DOM load
-        document.addEventListener('DOMContentLoaded', () => {
-            animateOnScroll();
+        // form submit
+        document.getElementById('contact-form').addEventListener('submit', e => {
+            e.preventDefault();
+            alert('Thank you! We’ll reach out soon.');
+            e.target.reset();
         });
     </script>
 </body>
